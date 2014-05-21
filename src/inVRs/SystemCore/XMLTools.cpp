@@ -750,7 +750,7 @@ INVRS_SYSTEMCORE_API bool fileExists(const std::string& file) {
 		return S_ISREG(sb.st_mode);
 #else
 		// win32 has flaky posix compliance/omits S_ISREG:
-		return (S_IFREG && sb.st_mode);
+		return (S_IFREG & sb.st_mode);
 #endif
 	}
 	return false;
