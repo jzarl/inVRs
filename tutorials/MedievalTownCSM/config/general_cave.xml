@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE generalConfig SYSTEM "http://dtd.inVRs.org/generalConfig_v1.0a4.dtd">
+<generalConfig version="1.0a4">
+	<general>
+
+		<Interfaces>
+			<option key="inputInterfaceConfiguration" value="inputinterface_cave.xml" />
+			<option key="outputInterfaceConfiguration" value="outputinterface.xml" />
+		</Interfaces>
+		<Modules>
+			<option key="modulesConfiguration" value="modules_cave.xml" />
+		</Modules>
+
+		<SystemCore>
+			<option key="systemCoreConfiguration" value="systemCore_cave.xml" />
+		</SystemCore>
+		
+		<OpenSGApplicationBase>
+			<option key="useCSM" value="true"/>
+			<option key="csmConfigFile" value="lrz_cave_trackd.csm"/>
+		</OpenSGApplicationBase>
+	</general>
+
+	<paths>
+		<root directory="" />
+		<path name="SystemCoreConfiguration" directory="config/systemcore/" />
+
+		<path name="Plugins" directory=""/>
+		<path name="ModulesConfiguration" directory="config/modules/" />
+		<path name="InputInterfaceConfiguration" directory="config/inputinterface/" />
+		<path name="OutputInterfaceConfiguration" directory="config/outputinterface/" />
+		
+		<!-- directorys for World DB Datastructure-->
+		<path name="WorldConfiguration" 
+			directory="config/systemcore/worlddatabase/" />
+		<path name="EnvironmentConfiguration" 
+			directory="config/systemcore/worlddatabase/environment/" />
+		<path name="EntityConfiguration" 
+			directory="config/systemcore/worlddatabase/entity/" />
+		<path name="TileConfiguration" 
+			directory="config/systemcore/worlddatabase/tile/" />
+			
+		<!-- directorys for User DB Datastructure-->
+		<path name="UserConfiguration" directory="config/systemcore/userdatabase/" />
+		<path name="AvatarConfiguration" 
+			directory="config/systemcore/userdatabase/avatar/" />
+
+		<path name="CursorConfig" 
+			directory="config/systemcore/userdatabase/cursorRepresentation/" />
+		<path name="CursorModelConfiguration" 
+			directory="config/systemcore/userdatabase/cursorModel/" />
+		
+		<!-- directory for TransformationManager -->
+		<path name="TransformationManagerConfiguration" 
+			directory="config/systemcore/transformationmanager/" />
+				
+		<!-- directory for Interfaces Datastructure -->
+		<path name="ControllerConfiguration" directory="config/inputinterface/controllermanager/" />
+		<path name="CAVESceneManagerConfiguration" directory="config/outputinterface/cavescenemanager"/>
+
+		<!-- directorys for Module Datastructure -->		
+		<path name="NavigationConfiguration" directory="config/modules/navigation/" />
+
+		<path name="InteractionModuleConfiguration" 
+			directory="config/modules/interaction/" />
+		
+		<path name="NetworkConfiguration" directory="config/modules/network/" />
+			
+		<!-- directorys for Models-->
+		<path name="Models" directory="models/" />
+		<path name="Tiles" directory="models/tiles/" />
+		<path name="Entities" directory="models/entities/" />
+		<path name="Skybox" directory="models/skybox/" />
+		<path name="Highlighters" directory="models/highlighters/" />		
+		<path name="Avatars" directory="models/avatars/" />
+		<path name="HeightMaps" directory="models/heightmaps/" />
+		<path name="CollisionMaps" directory="models/collisionmaps/" />
+	</paths>
+</generalConfig>

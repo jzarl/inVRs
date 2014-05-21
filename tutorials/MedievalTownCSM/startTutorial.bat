@@ -1,0 +1,6 @@
+SET INVRS_DIR=..\..\
+SET OPENSG_DIR=C:\Programme\OpenSG
+SET TARGET_BUILD=Debug
+
+SET PATH=%PATH%;%INVRS_DIR%\lib;%OPENSG_DIR%\lib
+build\%TARGET_BUILD%\MedievalTownCSM.exe %*

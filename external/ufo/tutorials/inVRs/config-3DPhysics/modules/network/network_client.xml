@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<network>
+	<ports TCP="8083" UDP="8084"/>
+</network>

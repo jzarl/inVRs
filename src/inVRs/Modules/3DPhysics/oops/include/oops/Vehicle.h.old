@@ -1,0 +1,94 @@
+/*---------------------------------------------------------------------------*\
+ *           interactive networked Virtual Reality system (inVRs)            *
+ *                                                                           *
+ *    Copyright (C) 2005-2009 by the Johannes Kepler University, Linz        *
+ *                                                                           *
+ *                            www.inVRs.org                                  *
+ *                                                                           *
+ *              contact: canthes@inVRs.org, rlander@inVRs.org                *
+\*---------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------*\
+ *                                License                                    *
+ *                                                                           *
+ * This library is free software; you can redistribute it and/or modify it   *
+ * under the terms of the GNU Library General Public License as published    *
+ * by the Free Software Foundation, version 2.                               *
+ *                                                                           *
+ * This library is distributed in the hope that it will be useful, but       *
+ * WITHOUT ANY WARRANTY; without even the implied warranty of                *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU         *
+ * Library General Public License for more details.                          *
+ *                                                                           *
+ * You should have received a copy of the GNU Library General Public         *
+ * License along with this library; if not, write to the Free Software       *
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.                 *
+\*---------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------*\
+ *                                Changes                                    *
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+ *                                                                           *
+\*---------------------------------------------------------------------------*/
+
+#ifndef _VEHICLE_H
+#define _VEHICLE_H
+
+#include "ArticulatedBody.h"
+
+namespace oops
+{
+
+class Hinge2Joint;
+class HingeJoint;
+class SliderJoint;
+
+class Vehicle : public ArticulatedBody
+{
+protected:
+	friend class VehicleFactory;
+	bool activeSuspension;
+	float accelSpeed;
+	float steerDir;
+	float steerAngle;
+	float springConstant, dampingConstant;
+	float swayForce, accelerationForce;
+	Hinge2Joint *axisLF, *axisRF;
+	HingeJoint *axisLB, *axisRB;
+	SliderJoint *suspLB, *suspRB;
+	RigidBody *body, *tireLF, *tireRF, *tireLB, *tireRB;
+
+	virtual void cloneData(Vehicle* result);
+
+public:
+	Vehicle();
+	virtual ~Vehicle();
+	virtual ArticulatedBody* clone();
+
+	void accelerate(float value);
+	void brake(float intensity);
+	void steer(float direction);
+
+	void setSuspension(bool active);
+	void setSpringConstant(float springConstant);
+	void setDampingConstant(float dampingConstant);
+	void setSwayForce(float swayForce);
+	void setAccelerationForce(float accelerationForce);
+
+	bool getSuspensionMode();
+	float getSpringConstant();
+	float getDampingConstant();
+	float getSwayForce();
+	float getAccelerationForce();
+
+	void loadConfig(std::string cfgFile);
+	void writeConfig(std::string cfgFile);
+
+	void update(float dt, float stepSize = 0.01f);
+}; // Vehicle
+
+}; // oops
+
+#endif // _VEHICLE_H

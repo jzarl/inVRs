@@ -1,0 +1,871 @@
+<?xml version="1.0"?>
+<!DOCTYPE ufoConfiguration SYSTEM "http://dtd.invrs.org/ufoConfiguration_v1.0a4.dtd">
+<ufoConfiguration version="1.0a4">
+	<!-- ufo configuration files in the UFOCFGPLAIN format can be used using the plainConfiguration directive:
+	<plainConfiguration configFile="config/modules/steering/steering_server.txt"/>
+	-->
+	<arguments>
+		<arg key="pluginDirectories" value="../../../../../install/lib/:../../../../../../../lib"/>
+	</arguments>
+	<!-- *****************  Flock of Boids ************************ -->
+	<flock typename="Flock">
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="28"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="29"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="30"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="31"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="32"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="33"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="34"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="35"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="36"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="37"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="38"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="39"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="40"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="41"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="42"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="43"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="44"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="45"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="46"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="47"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="48"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="49"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="50"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="51"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="52"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="53"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="54"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="55"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="56"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="57"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="58"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="59"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="60"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="61"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="62"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="63"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="64"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="65"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="66"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="67"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="68"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="69"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="70"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="71"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="72"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="73"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="74"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="75"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="76"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="77"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="78"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="79"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="80"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="81"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="82"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="83"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="84"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="85"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="86"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="87"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="88"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="89"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="90"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="91"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="92"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="93"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="94"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="95"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="96"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="97"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="98"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="99"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="100"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="101"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="102"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="103"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="104"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="105"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="106"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="107"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="108"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="109"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="110"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="111"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="112"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="113"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="114"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="115"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="116"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="117"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="118"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="119"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="120"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="121"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="122"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="123"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="124"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="125"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="126"/>
+				</arguments>
+			</steerable>
+		</pilot>
+		<pilot typename="swarmPilot" fromTemplate="true">
+			<steerable typename="swarmSteerable" fromTemplate="true">
+				<arguments>
+					<arg key="environmentId" value="1"/>
+					<arg key="entityId" value="127"/>
+				</arguments>
+			</steerable>
+		</pilot>
+	</flock>
+	<template name="swarmSteerable">
+		<steerable typename="InVRsSteerable">
+			<arguments>
+				<!-- set common parameters, but don't specify steered Entity: -->
+				<arg key="useSimplePhysicsEntity" value="false"/>
+				<arg key="VMax" value="10"/>
+			</arguments>
+		</steerable>
+	</template>
+	<template name="swarmPilot"> 
+		<pilot typename="Pilot">
+			<behaviour typename="CachingBehaviour">
+				<arguments>
+					<arg key="deltaTMin" value="0.04"/>
+				</arguments>
+				<behaviour typename="AverageBehaviour">
+					<behaviour typename="ScaleBehaviour">
+						<arguments>
+							<arg key="scaleFactor" value="0.1"/>
+						</arguments>
+						<behaviour typename="FollowWaypointsBehaviour">
+							<arguments>
+								<arg key="waypoint" value="181.81 22.0 206.76"/>
+								<arg key="epsilon" value="0.0"/>
+							</arguments>
+						</behaviour>
+					</behaviour>
+					<behaviour typename="FaceForwardBehaviour" />
+					<behaviour typename="ScaleBehaviour">
+						<arguments>
+							<arg key="scaleFactor" value="5"/>
+						</arguments>
+						<behaviour typename="RandomBehaviour"/>
+					</behaviour>
+					<behaviour typename="AlignmentBehaviour">
+						<arguments>
+							<arg key="neighbourDistance" value="15.0"/> 
+						</arguments>
+					</behaviour>
+					<behaviour typename="CohesionBehaviour">
+						<arguments>
+							<arg key="neighbourDistance" value="5.0"/>
+						</arguments>
+					</behaviour>
+					<behaviour typename="ScaleBehaviour">
+						<arguments>
+							<arg key="scaleFactor" value="5"/>
+						</arguments>
+						<behaviour typename="SeparationBehaviour">
+							<arguments>
+								<arg key="neighbourDistance" value="1.0"/>
+							</arguments>
+						</behaviour>
+					</behaviour>
+				</behaviour>
+			</behaviour>
+		</pilot>
+	</template>
+</ufoConfiguration>

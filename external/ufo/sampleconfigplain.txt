@@ -1,0 +1,64 @@
+UFOCFGPLAIN
+/* comments can exist on top-level */
+/* also on top level are Flock and Pilot */
+immediate FLOCK Flock {
+/* comments can also coexist with parameters and children */
+/* if parameters or children are empty, you can omit them. */
+parameters {
+}
+children {
+immediate PILOT Pilot {
+parameters {
+}
+children {
+immediate BEHAVIOUR SampleBehaviour {
+parameters {
+/* parameters are simple key = value pairs */
+samplekey = "samplevalue"
+/* for single-word values it doesn't matter, if there are enclosing quotes: */
+anotherkey = anothervalue
+/* linebreaks do not have any special meaning in this file: */
+foo1 = bar1 foo2 = bar2
+/* if you want to assign a multi-word string-value to a key, use a string: */
+text = "more than one word"
+}
+children {
+}
+}
+immediate STEERABLE SampleSteerable {
+parameters {
+}
+children {
+}
+}
+}
+}
+}
+}
+immediate PILOT Pilot {
+parameters {
+id = fooid
+}
+children {
+immediate BEHAVIOUR SampleBehaviour {
+parameters {
+}
+children {
+}
+}
+fromTemplate STEERABLE tplSteerable {
+parameters {
+steerid = sfooid
+}
+children {
+}
+}
+}
+}
+template tplSteerable STEERABLE SampleSteerable {
+parameters {
+tplparam = tplfoo
+}
+children {
+}
+}

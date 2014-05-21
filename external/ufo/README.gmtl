@@ -1,0 +1,30 @@
+Installing GMTL for use with ufo
+================================
+
+Prerequisites:
+ - scons
+
+1) Download GMTL
+   The latest version can be found here:
+   http://sourceforge.net/projects/ggt
+
+2) Unpack GMTL and enter the gmtl-xxxx folder
+
+3) Install GMTL to the ufo/external folder:
+   scons install prefix=/path/to/ufo/external
+
+   If using scons is not an option for you, just copying the include directory
+   of GMTL to ufo/external/ should also work.
+
+4) If the version you downloaded is still not found, or if you have already installed
+   GMTL somewhere else, use one of these lines for cmake:
+
+   # cd build
+   # cmake .. -DGMTL_ROOT_DIR=/usr/local
+   OR:
+   # cmake .. -DGMTL_PROBE_VERSIONS=0.6.1-Alpha1
+   OR:
+   # cmake .. -DGMTL_PROBE_VERSIONS=0.6.1-Alpha1 -DGMTL_ROOT_DIR=/usr/local
+
+Note: if support for inVRs is enabled, it is normally a good idea to use the
+same GMTL version as the inVRs framework.

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+	<avatar type="AvataraAvatar">
+		<name value="Garstenauer"/>
+		<model path="human/HumanHigh.mdl" image="human/Human.jpg"/>
+		<modelTransformation>
+			<translation x="0" y="0" z="0"/>
+			<scale x="-0.011" y="-0.011" z="0.011"/>
+			<!-- TODO: avoid mirror due to wrong hands -->
+			<rotation x="1" y="0" z="0" angle="-90"/>
+		</modelTransformation>
+		<animations smooth="true" speed="2" default="standing">
+			<animation key="standing" path="human/Standing.ani"/>
+			<animation key="anim1" path="human/IdleLeft.ani"/>
+			<animation key="anim2" path="human/IdleRight.ani"/>
+			<animation key="anim3" path="human/Waving0.ani"/>
+			<animation key="anim4" path="human/Waving1.ani"/>
+			<animation key="anim5" path="human/Waving2.ani"/>
+			<animation key="anim6" path="human/Walk.ani"/>
+			<animation key="anim7" path="human/SideWalkLeft.ani"/>
+			<animation key="anim8" path="human/SideWalkRight.ani"/>
+			<animation key="running" path="human/Run.ani"/>
+			<animation key="anim10" path="human/Crouching.ani"/>
+			<animation key="anim11" path="human/Tumble.ani"/>
+			<animation key="anim12" path="human/TurnRight.ani"/>
+			<animation key="anim13" path="human/TurnLeft.ani"/>
+			<animation key="anim14" path="human/Yawn.ani"/>
+			<animation key="anim15" path="human/Standing.ani"/>
+			<animation key="walking" path="human/Walk.ani"/>
+		</animations>
+	</avatar>
+</config>

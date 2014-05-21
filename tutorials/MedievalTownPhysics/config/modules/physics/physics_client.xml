@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<physics>
+	<simulation>
+		<gravity x="0" y="-9.81" z="0"/>
+<!--		<gravity x="0" y="0.0" z="0"/>-->
+		<stepSize value="0.0167"/>
+<!--		<stepFunction name="STEP"/> -->
+ 		<stepFunction name="QUICKSTEP"/>
+<!-- 		<stepFunction name="STEPFAST1" numberOfSteps="5"/> -->
+	</simulation>
+
+	<objectManager type="SingleServerPhysicsObjectManager">
+		<serverMode value="client"/>
+	</objectManager>
+<!-- 
+	<synchronisationModel type="FullSynchronisationModel">
+		<arguments>
+		</arguments>
+	</synchronisationModel>
+-->
+	<synchronisationModel type="ChangedSynchronisationModel">
+		<arguments>
+		</arguments>
+	</synchronisationModel>
+</physics>

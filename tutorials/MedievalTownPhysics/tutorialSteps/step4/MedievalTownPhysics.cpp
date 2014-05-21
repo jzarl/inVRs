@@ -1,0 +1,257 @@
+/*
+ * MedievalTownNew.cpp
+ *
+ *  Created on: Apr 24, 2009
+ *      Author: rlander
+ */
+
+#include <inVRs/tools/libraries/OpenSGApplicationBase/OpenSGApplicationBase.h>
+
+#include <inVRs/tools/libraries/Skybox/Skybox.h>
+#include <inVRs/tools/libraries/HandRepresentation/HandRepresentation.h>
+#include <inVRs/SystemCore/WorldDatabase/WorldDatabase.h>
+#include <inVRs/SystemCore/TransformationManager/TransformationManager.h>
+
+#include <inVRs/InputInterface/ControllerManager/ControllerManager.h>
+#include <inVRs/tools/libraries/HeightMap/HeightMapModifier.h>
+#include <inVRs/tools/libraries/HeightMap/HeightMapManager.h>
+#include <inVRs/tools/libraries/CollisionMap/CheckCollisionModifier.h>
+
+#include <inVRs/Modules/Interaction/Interaction.h>
+
+#include <inVRs/Modules/3DPhysics/Physics.h>
+#include <inVRs/tools/libraries/oops/OpenSGTriangleMeshLoader.h>
+#include <inVRs/tools/libraries/oops/HtmpHeightFieldLoader.h>
+#include <inVRs/tools/libraries/oops/OpenSGRendererFactory.h>
+#include <inVRs/Modules/3DPhysics/PhysicsHomerManipulationActionModel.h>
+
+#include <inVRs/InputInterface/ControllerButtonChangeCB.h>
+
+
+class MedievalTownPhysics : public OpenSGApplicationBase
+{
+private:
+	std::string defaultConfigFile;		// config file
+	Skybox skybox;						// scene surroundings
+	HandRepresentation* hand;			// the representation of the cursor
+	float windMillSpeed;				// the rotational speed of a windmill
+	OpenSGSceneGraphInterface* sgIF;	// pointer to the OpenSG scene graph interface
+	OSG::NodePtr root;					// root pointer of the scene graph
+	OSG::NodePtr scene;					// pointer to the scene loaded in WorldDatabase
+
+	Physics* physics;
+    oops::OpenSGTriangleMeshLoader triMeshLoader;
+    oops::HtmpHeightFieldLoader heightFieldLoader;
+    oops::OpenSGRendererFactory rendererFactory;
+
+    bool showPhysicsObjects;
+	ControllerButtonChangeCB<MedievalTownPhysics> buttonCallback;
+
+public:
+	MedievalTownPhysics() :
+	hand(NULL),
+	windMillSpeed(0),
+	sgIF(NULL),
+	root(OSG::NullFC),
+	scene(OSG::NullFC),
+	physics(NULL),
+	showPhysicsObjects(false)
+	{
+		defaultConfigFile = "config/general_desktop_server.xml";
+	} // MedievalTownPhysics
+
+	~MedievalTownPhysics() {
+		globalCleanup();
+	} // ~MedievalTownPhysics
+
+	bool preInitialize(const CommandLineArgumentWrapper& args) {
+		// create root node first because it is needed when Physics module is loaded (which happens
+		// before the initialize method is called)
+		root = Node::create();
+		beginEditCP(root);
+			root->setCore(Group::create());
+		endEditCP(root);
+
+		return true;
+	} // preInitialize
+
+	std::string getConfigFile(const CommandLineArgumentWrapper& args) {
+		if (args.containOption("config"))
+			return args.getOptionValue("config");
+		else
+			return defaultConfigFile;
+	} // getConfigFile
+
+	bool initialize(const CommandLineArgumentWrapper& args) {
+		// generate or load and configure height maps of the used tiles
+		HeightMapManager::generateTileHeightMaps();
+
+		// generate and configure the SkyBox
+		std::string skyPath = Configuration::getPath("Skybox");
+		skybox.init(5,5,5, 1000, (skyPath+"lostatseaday/lostatseaday_dn.jpg").c_str(),
+			(skyPath+"lostatseaday/lostatseaday_up.jpg").c_str(),
+			(skyPath+"lostatseaday/lostatseaday_ft.jpg").c_str(),
+			(skyPath+"lostatseaday/lostatseaday_bk.jpg").c_str(),
+			(skyPath+"lostatseaday/lostatseaday_rt.jpg").c_str(),
+			(skyPath+"lostatseaday/lostatseaday_lf.jpg").c_str());
+
+		// cast sceneGraphInterface from ApplicationBase to OpenSGSceneGraphInterface
+		sgIF = dynamic_cast<OpenSGSceneGraphInterface*>(sceneGraphInterface);
+		// must exist because it is created in OpenSGApplicationBase
+		assert (sgIF);
+
+		// add scene to root node (which was created in preInitialize method)
+		assert(root != OSG::NullFC);
+		scene = sgIF->getNodePtr();
+		beginEditCP(root);
+			root->addChild(scene);
+			// add the SkyBox to the scene
+			root->addChild(skybox.getNodePtr());
+		endEditCP(root);
+
+		// set to root node to the responsible SceneManager (managed by OpenSGApplicationBase)
+		setRootNode(root);
+
+		// hide local avatar since camera will be positioned approximately in avatar's head
+		AvatarInterface* avatar = localUser->getAvatar();
+		assert (avatar);
+		avatar->showAvatar(false);
+
+		// set our transformation to the start transformation
+		TransformationData startTrans =
+			WorldDatabase::getEnvironmentWithId(1)->getStartTransformation(0);
+		localUser->setNavigatedTransformation(startTrans);
+
+		// set the near clipping plane to a proper value
+		setNearClippingPlane(0.1);
+
+		// make the cursor visible by setting a cursor representation model
+		hand = new HandRepresentation(Configuration::getPath("CursorConfig")+
+					"handRepresentation.xml");
+		OpenSGModel* handModel = new OpenSGModel(hand->getModel());
+		localUser->getCursor()->setModel(handModel);
+
+		// try to connect to network if first command line argument is {hostname|IP}:port
+		if (args.getNumberOfArguments() > 1) {
+			printf("Trying to connect to %s\n", args.getArgument(1).c_str());
+			networkModule->connect(args.getArgument(1));
+		} // if
+
+		buttonCallback.setSource(controllerManager->getController());
+		buttonCallback.setTarget(this, &MedievalTownPhysics::buttonChangeCallback);
+		buttonCallback.activate();
+
+		physics->start();
+
+		return true;
+	} // init
+
+	void initCoreComponentCallback(CoreComponents comp) {
+		// register factory for HeightMapModifier as soon as the
+		// TransformationManager is initialized
+		if (comp == TRANSFORMATIONMANAGER) {
+			TransformationManager::registerModifierFactory
+				(new HeightMapModifierFactory());
+		// register factory for CheckCollisionModifier
+			TransformationManager::registerModifierFactory
+				(new CheckCollisionModifierFactory);
+		} // if
+	} // initCoreComponentCallback
+
+	void initModuleCallback(ModuleInterface* moduleInterface) {
+		if (moduleInterface->getName() == "Physics") {
+			// set root node for physics renderer factory (renderer allows to display the physics
+			// objects instead of the entity models, which can be useful for debugging)
+	        rendererFactory.setRoot(root);
+
+			// get the pointer to the Physics module
+	        physics = dynamic_cast<Physics*>(moduleInterface);
+	        assert(physics);
+
+	        // get the XMLLoader and set the factories
+	        oops::XMLLoader* physicsLoader = physics->getXMLLoader();
+	        physicsLoader->setTriangleMeshLoader(&triMeshLoader);
+	        physicsLoader->setHeightFieldLoader(&heightFieldLoader);
+	        physicsLoader->setRendererFactory(&rendererFactory);
+		} // if
+		else if (moduleInterface->getName() == "Interaction") {
+			((Interaction*)moduleInterface)->registerStateActionModelFactory(
+					new PhysicsHomerManipulationActionModelFactory);
+		} // if
+	} // initModuleCallback
+
+	void display(float dt) {
+		skybox.setupRender(activeCamera->getPosition()); // attach the SkyBox to the camera
+
+		physics->update(dt);
+
+		// change the appearance of the hand when something is grabbed
+		if (interactionModule->getState() == InteractionInterface::STATE_MANIPULATION) {
+			hand->setClosed();
+		} else {
+			hand->setOpened();
+		} // else
+
+		if (controllerManager->getController()->getButtonValue(2)) { // the right mouse button is pressed
+			windMillSpeed += dt*0.5;	         // increase speed of the windmill
+			if (windMillSpeed > 2*M_PI) {
+				windMillSpeed = 2*M_PI;
+			}
+		} else if (windMillSpeed > 0) {	     // pressing mouse button stopped
+			windMillSpeed -= dt*0.5;	         // decrease speed of windmill
+		} else if (windMillSpeed < 0) {
+			windMillSpeed = 0;
+		} // else if
+		if (windMillSpeed > 0) {	          // rotate sails
+			// retrieve the windmill entity
+			Entity* windMill = WorldDatabase::getEntityWithEnvironmentId(1, 27);
+			ModelInterface* windMillModel = windMill->getVisualRepresentation();
+				// retrieve the windmill's sails
+			SceneGraphNodeInterface* sceneGraphNode =
+				windMillModel->getSubNodeByName("Sails");
+				// make sure this node is a transformation node
+			assert(sceneGraphNode->getNodeType() ==
+				SceneGraphNodeInterface::TRANSFORMATION_NODE);
+			TransformationSceneGraphNodeInterface* transNode =
+				dynamic_cast<TransformationSceneGraphNodeInterface*>(sceneGraphNode);
+			assert(transNode);
+				// rotate the sails
+			TransformationData trans = transNode->getTransformation();
+			gmtl::AxisAnglef axisAngle(windMillSpeed*dt, 0, 0, 1);
+			gmtl::Quatf rotation;
+			gmtl::set(rotation, axisAngle);
+			trans.orientation *= rotation;
+			transNode->setTransformation(trans);
+		} // if
+	} // display
+
+	void buttonChangeCallback(int buttonIndex, int newButtonValue) {
+		if (buttonIndex == 7 && newButtonValue != 0) {
+			showPhysicsObjects = !showPhysicsObjects;
+			beginEditCP(scene);
+				scene->setActive(!showPhysicsObjects);
+			endEditCP(scene);
+			physics->getSimulation()->setObjectsVisible(showPhysicsObjects);
+		} // if
+	} // buttonChangeCallback
+
+	void cleanup() {
+		physics->kill();
+		if (hand)
+			delete hand;
+	} // cleanup
+
+}; // MedievalTownPhysics
+
+int main(int argc, char** argv) {
+	MedievalTownPhysics* app = new MedievalTownPhysics();
+
+	if (!app->start(argc, argv)) {
+		printd(ERROR, "Error occured during startup!\n");
+		delete app;
+		return -1;
+	} // if
+
+	delete app;
+	return 0;
+} // main

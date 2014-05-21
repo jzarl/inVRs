@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<modules>
+	<module name="Navigation" cfgPath="navigationKeyboardOnly.xml" /> 
+	<module name="Interaction" cfgPath="interaction.xml" />
+	<module name="Network" cfgPath="network_client.xml" /> 
+</modules>

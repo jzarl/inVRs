@@ -1,0 +1,76 @@
+v1.0alpha5:
+-----------
+- Improvements in automatic configuration file conversion
+- API-fix in EntityType class for method getInstanceList
+- updates in CAVESceneManager for improved Cluster support
+- integration of additional parameters in OpenSGApplicationBase for
+CAVESceneManager
+- correction of inverted x-axis in GlutSensorEmulatorDevice
+
+v1.0alpha4:
+-----------
+- Added versioning of configuration files
+- Changed CursorRepresentation implementation for being loaded via
+configuration
+- Added support for VRPN devices (via VrpnDevice class in tools folder)
+- Changed folder structure in src folder to be consistent with include
+directories
+
+
+v1.0alpha3:
+-----------
+- Added CAVESceneManager and avatara into external folder
+
+- Major rework of ApplicationBase
+- Added OpenSGApplicationBase to simplify application development
+
+- Cleanup of ControllerManager package
+- Added support for arbitrary number of sensors to User class
+
+- Added support for UserTransformationModel to User
+- Added default UserTransformationModel HeadPositionUserTransformationModel
+- Added synchronization of UserTransformationModel to UserDatabaseAddUserEvent
+- Fixed opening of tracking pipes in UserDatabaseAddUserEvent
+- Added helper-methods for TransformationPipe-ID output
+- Refactoring of cursorModel to cursorTransformationModel in User class
+- Added new Modifier ApplyUserTransformationModifier which executes the UserTransformationModel
+
+- Added TrackdDevice to inVRs tools folder
+
+- Added AvataraWrapper to tools/libraries 
+- New class CommandLineArguments for simple argument parsing
+- Fixed DebugOutput Segfault when OsgInit was not called
+- Updated ApplicationBase-classes and Applications to use new CommandLineArguments object 
+
+- Added classes for InputInterface and OutputInterface for consistenty with theoretical structure
+- Integrated Module-support for InputInterface/OutputInterface
+- Major rework of MAKE_MODULE macro: support for target class added (SystemCore/InputInterface/OutputInterface)
+
+
+v1.0alpha2:
+-----------
+
+- Fixed SystemCore::configure method to abort on errors!
+- Fixed TransformationManager::loadModifier method to report errors with loading config file!
+- Added MedievalTown tutorial
+
+- Removed platform-dependency in interfaces.xml (instead of specifying library file the name of the library is passed via libName argument)
+- Fixed path problems in main configuration file when url was not ended with a "/" or "\" separator
+
+- Fixed build system issues with new Macros on Windows systems
+
+- Added CMake Macros for simple path searching operations
+
+- Fixed bug in Navigation Models with missing ArgumentVectors
+
+- Support for MAC OS X added to build system
+
+- Improved CMake files for OpenSG path settings in Windows: allows building without modifying user.cmake
+- Fixed bug with spaces in OpenSG path in config.cmake
+
+- Fixed release build for Visual Studio 2005: DEBUG definitions removed from compiler flags
+- Fixed linker flags in cmake files: did not link against dependencies by default
+- Removed /MP compiler flag for MSVC70 and MSVC71
+- Added /GR compiler flag for MSVC70 and MSVC71 to allow dynamic_casts
+- Removed /Gm compiler flag for MSVC90
+

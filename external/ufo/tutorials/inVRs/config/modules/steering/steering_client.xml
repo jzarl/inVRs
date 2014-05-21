@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<ufoConfiguration version="1.0a4">
+	<plainConfiguration configFile="config/modules/steering/steering_client.txt"/>
+</ufoConfiguration>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE generalConfig SYSTEM "http://dtd.inVRs.org/generalConfig_v1.0a4.dtd">
+<generalConfig version="1.0a4">
+	<general>
+		<Interfaces>
+			<option key="inputInterfaceConfiguration" value="inputInterface.xml"/>
+		</Interfaces>
+		<Interfaces>
+			<option key="outputInterfaceConfiguration" value="outputInterface.xml"/>
+		</Interfaces>
+		<Modules>
+			<option key="modulesConfiguration" value="modules.xml"/>
+		</Modules>
+		<SystemCore>
+			<option key="systemCoreConfiguration" value="systemCore.xml"/>
+		</SystemCore>
+		<XmlConfigLoader>
+			<option key="updateFiles" value="true"/>
+		</XmlConfigLoader>
+		<DeformationSample>
+            <option key="dim" value="3" />
+            <option key="epsilon" value="0.0001f" />
+            <option key="height" value="3" />
+            <option key="width" value="2" />
+            <option key="length" value="1" />
+            <option key="bendCenter" value="0.5f" />
+            <option key="bend" value="25.0f" />
+            <option key="twist" value="5.0f" />
+            <option key="taper" value="1.0f" />
+            <option key="move" value="0.5f" />
+            <option key="instantExecution" value="false" />
+		</DeformationSample>
+	</general>
+
+	<paths>
+		<root directory="./"/>
+		<path name="SystemCoreConfiguration" directory="config/systemcore/"/>
+		<path name="Plugins" directory="@inVRs_LIBRARY_DIR@"/>
+		<path name="ModulesConfiguration" directory="config/modules/"/>
+		
+		<path name="OutputInterfaceConfiguration" directory="config/outputinterface/"/>
+		<path name="InputInterfaceConfiguration" directory="config/inputinterface/"/>
+		
+		<path name="WorldConfiguration" directory="config/systemcore/worlddatabase/"/>
+		<path name="EnvironmentConfiguration" directory="config/systemcore/worlddatabase/environment/"/>
+		<path name="EntityTypeConfiguration" directory="config/systemcore/worlddatabase/entity/"/>
+		<path name="TileConfiguration" directory="config/systemcore/worlddatabase/tile/"/>
+		<path name="UserConfiguration" directory="config/systemcore/userdatabase/"/>
+		<path name="CursorConfig" directory="config/systemcore/userdatabase/cursorRepresentation/"/>
+		<path name="CursorTransformationModelConfiguration" directory="config/systemcore/userdatabase/cursorModel/"/>
+		<path name="ControllerManagerConfiguration" directory="config/inputinterface/controllermanager/"/>
+		<path name="TransformationManagerConfiguration" directory="config/systemcore/transformationmanager/"/>
+		
+		<path name="NetworkModuleConfiguration" directory="config/modules/network/"/>
+		<path name="NavigationModuleConfiguration" directory="config/modules/navigation/" />
+		<path name="InteractionModuleConfiguration" directory="config/modules/interaction/" />
+		<path name="DeformationConfiguration" directory="config/modules/deformation/"/>
+		
+		<path name="Models" directory="models/"/>
+		<path name="Tiles" directory="models/tiles/"/>
+		<path name="Entities" directory="models/entities/"/>
+		<path name="Highlighters" directory="models/highlighters/"/>
+	</paths>
+</generalConfig>

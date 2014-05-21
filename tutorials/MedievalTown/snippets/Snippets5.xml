@@ -1,0 +1,41 @@
+<!-- **************************** general.xml ****************************** -->
+
+<!-- ************************ Snippet-5-1 - BEGIN ************************** -->
+		<path name="NetworkModuleConfiguration" 
+				directory="config/modules/network/" />
+<!-- ************************* Snippet-5-1 - END *************************** -->
+
+
+<!-- **************************** modules.xml ****************************** -->
+
+<!-- ************************ Snippet-5-2 - BEGIN ************************** -->
+	<module name="Network" configFile="network.xml" /> 
+<!-- ************************* Snippet-5-2 - END *************************** -->
+
+
+<!-- *************************** modifiers.xml ***************************** -->
+
+<!-- ************************ Snippet-5-3 - BEGIN ************************** -->
+			<modifier type="TransformationDistributionModifier" />
+<!-- ************************* Snippet-5-3 - END *************************** -->
+
+<!-- ************************ Snippet-5-4 - BEGIN ************************** -->
+		<pipe srcComponentName="InteractionModule" dstComponentName="WorldDatabase"
+			pipeType="Any" objectClass="Any" objectType="Any" objectId="Any" 
+			fromNetwork="1">
+			<modifier type="EntityTransformationWriter" />
+		</pipe>
+<!-- ************************* Snippet-5-4 - END *************************** -->
+
+<!-- ************************ Snippet-5-5 - BEGIN ************************** -->
+		<pipe srcComponentName="NavigationModule" dstComponentName="TransformationManager"
+			pipeType="Any" objectClass="Any" objectType="Any" objectId="Any" 
+			fromNetwork="1">
+			<modifier type="UserTransformationWriter" />
+			<modifier type="AvatarTransformationWriter" >
+				<arguments>
+					<arg key="clipRotationToYAxis" type="bool" value="true" />
+				</arguments>
+			</modifier>
+		</pipe>
+<!-- ************************* Snippet-5-5 - END *************************** -->

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<user>
+	<avatar config="undead.xml" />
+	<cursorModel config="homerCursorModel.xml"/>
+</user>

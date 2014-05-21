@@ -1,0 +1,22 @@
+diff -ur gmtl-0.6.1-orig//gmtl/Numerics/Eigen.h gmtl-0.6.1/gmtl/Numerics/Eigen.h
+--- gmtl-0.6.1-orig//gmtl/Numerics/Eigen.h	2010-01-02 18:13:17.000000000 +0100
++++ gmtl-0.6.1/gmtl/Numerics/Eigen.h	2010-11-05 19:00:01.253881707 +0100
+@@ -9,7 +9,6 @@
+ #ifndef _EIGEN_H
+ #define _EIGEN_H
+ 
+-#include <gmtl/gmtlConfig.h>
+ 
+ namespace gmtl
+ {
+diff -ur gmtl-0.6.1-orig//gmtl/Sphere.h gmtl-0.6.1/gmtl/Sphere.h
+--- gmtl-0.6.1-orig//gmtl/Sphere.h	2010-01-02 18:13:17.000000000 +0100
++++ gmtl-0.6.1/gmtl/Sphere.h	2010-11-05 18:49:58.501881867 +0100
+@@ -106,6 +106,6 @@
+ typedef Sphere<float>   Spheref;
+ typedef Sphere<double>  Sphered;
+ 
+-};
++}
+ 
+ #endif

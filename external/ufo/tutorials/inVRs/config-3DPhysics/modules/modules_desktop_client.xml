@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<modules>
+	<module name="Navigation" cfgPath="navigation_desktop.xml" /> 
+	<module name="Interaction" cfgPath="interaction.xml" />
+	<module name="Network" cfgPath="network_client.xml" /> 
+	<module name="Physics" cfgPath="physics_client.xml" libName="3DPhysics" />
+	<module name="Steering" cfgPath="steering_client.txt" /> 
+</modules>

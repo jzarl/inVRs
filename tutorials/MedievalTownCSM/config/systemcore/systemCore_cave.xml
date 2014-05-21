@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<systemCore>
+	<worldDatabase config="worldDatabase.xml" />
+	<userDatabase config="userDatabase_cave.xml" />
+	<transformationManager config="modifiers_cave.xml" />
+</systemCore>

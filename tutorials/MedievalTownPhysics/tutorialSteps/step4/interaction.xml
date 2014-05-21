@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<interaction>
+	<selectionActionModel name="HighlightSelectionActionModel">
+		<arguments>
+			<arg key="modelType" type="string" value="OSG" />
+			<arg key="modelPath" type="string" value="box.osg" />
+		</arguments>
+	</selectionActionModel>
+
+	<manipulationActionModel name="PhysicsHomerManipulationActionModel"/>
+
+	<selectionChangeModel name="LimitRayCastSelectionChangeModel">
+		<arguments>
+			<arg key="rayDistanceThreshold" type="float" value="5" />
+		</arguments>
+	</selectionChangeModel>
+	<unselectionChangeModel name="LimitRayCastSelectionChangeModel">
+		<arguments>
+			<arg key="rayDistanceThreshold" type="float" value="5" />
+		</arguments>
+	</unselectionChangeModel>
+ 	<selectionConfirmationModel name="ButtonPressStateTransitionModel" >
+ 		<arguments>
+ 			<arg key="buttonIndex" type="int" value="0" />
+ 		</arguments>
+ 	</selectionConfirmationModel>
+	<manipulationTerminationModel name="ButtonPressStateTransitionModel" >
+		<arguments>
+ 			<arg key="buttonIndex" type="int" value="0" />
+ 		</arguments>
+	</manipulationTerminationModel>
+</interaction>

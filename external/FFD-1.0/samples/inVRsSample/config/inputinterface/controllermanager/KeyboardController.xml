@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<controller>
+	<data axes="0" buttons="11" sensors="0" />
+ 	<device name="GlutCharKeyboardDevice">
+		<button devIdx="32"  contIdx="0" />  <!-- space -->
+		<button devIdx="55"  contIdx="1" />  <!-- keypad 7 -->
+		<button devIdx="13"  contIdx="2" />  <!-- enter -->
+		<button devIdx="119" contIdx="3" />  <!-- W -->
+		<button devIdx="115" contIdx="4" />  <!-- S -->
+		<button devIdx="97"  contIdx="5" />  <!-- A -->
+		<button devIdx="100" contIdx="6" />  <!-- D -->
+		<button devIdx="56"  contIdx="7" />  <!-- keypad 8 -->
+		<button devIdx="53"  contIdx="8" />  <!-- keypad 5 -->
+		<button devIdx="52"  contIdx="9" />  <!-- keypad 4 -->
+		<button devIdx="54"  contIdx="10"/>  <!-- keypad 6 -->
+	</device>
+</controller>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<worldConfiguration>
+	<entities file="entities.xml" />
+	<tiles file="tiles.xml" />
+	<environmentLayout file="environmentLayout.xml" />
+</worldConfiguration>

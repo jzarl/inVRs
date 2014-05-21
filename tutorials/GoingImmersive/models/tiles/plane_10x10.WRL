@@ -1,0 +1,61 @@
+#VRML V2.0 utf8
+
+# This file was authored with Blender (http://www.blender.org/)
+# Blender version 248
+# Blender file plane_10x10.blend
+# Exported using VRML97 exporter v1.55 (2006/01/17)
+
+
+NavigationInfo {
+	headlight TRUE
+	visibilityLimit 0.0
+	type ["EXAMINE", "ANY"]
+	avatarSize [0.25, 1.75, 0.75]
+} 
+ 
+Background {
+	groundColor 0.057 0.221 0.4
+	skyColor 0.057 0.221 0.4
+}
+
+DEF Mesh_1_004 Transform {
+	translation 0.0 0.0 0.0
+		children [
+		Shape {
+			appearance Appearance {
+				material DEF MA_Material_1_004 Material {
+					diffuseColor 0.588 0.588 0.588
+					ambientIntensity 0.333
+					specularColor 0.0 0.0 0.0
+					emissiveColor 1.0 1.0 1.0 
+					shininess 0.098
+					transparency 0.0
+				}
+				texture DEF plane_png ImageTexture {
+					url "maps/cube.png"
+				}
+			}
+			geometry IndexedFaceSet {
+				solid TRUE
+				coord DEF coord_Mesh_1_004 Coordinate {
+					point [
+						-5.0 -0.0 5.0, 5.0 -0.0 5.0, -5.0 0.0 -5.0, 5.0 0.0 -5.0, 						
+					]
+				}
+				coordIndex [
+					2 0 3 -1, 3 0 1 -1, 					
+				]
+				texCoord TextureCoordinate {
+					point [
+						0.999 0.5, 0.999 0.0, 0.499 0.5, 0.499 0.5, 0.999 0.0, 0.499 0.0, 						
+					]
+				}
+				texCoordIndex [
+						0, 1, 2, -1, 3, 4, 5, -1, 					
+				]
+				creaseAngle 0.524
+			}
+		}
+	]
+}
+

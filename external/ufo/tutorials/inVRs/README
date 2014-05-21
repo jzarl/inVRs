@@ -1,0 +1,23 @@
+This version of the MedievalTown application is only compatible with inVRs 
+v1.0alpha3 or maybe higher!
+
+For more information please visit: http://www.invrs.org
+
+USAGE:
+
+Final application:
+Keyb.: W ................. move forward
+Keyb.: S ................. move backward
+Keyb.: A ................. strafe left
+Keyb.: D ................. strafe right
+Keyb.: M ................. toggle cursor fixed/released in window
+
+Mouse: left/right ........ turn left/right
+Mouse: up/down ........... look upward/downward
+Mouse: MMB + left/right .. rotate camera (roll)
+Mouse: LMB ............... pick up entity (when selected)
+                           release entity (when picked up)
+Mouse: RMB ............... windmill animation
+
+To start with a specific config-file:
+ufo_inVRs -config=/path/to/config.xml

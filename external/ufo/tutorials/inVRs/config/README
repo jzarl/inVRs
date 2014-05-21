@@ -1,0 +1,4 @@
+The files general_desktop_server.xml.in and general_desktop_client.xml.in are
+configured with the inVRs_LIBRARY_DIR by cmake. For easy testing without having
+to install the tutorial, links to the configured files in the build-directory
+are provided.

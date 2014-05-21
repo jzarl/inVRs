@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<controller>
+	<data axes="2" buttons="11" sensors="2" />
+	<device name="GlutMouseDevice">
+		<button devIdx="0" contIdx="0" />
+		<button devIdx="1" contIdx="1" />
+		<button devIdx="2" contIdx="2" />
+		<axis devIdx="0" contIdx="0" min="-1" max="1" />
+		<axis devIdx="1" contIdx="1" />
+	</device>
+	<device name="GlutCharKeyboardDevice">
+		<button devIdx="119" contIdx="3" />	<!-- W -->
+		<button devIdx="115" contIdx="4" />	<!-- S -->
+		<button devIdx="97"  contIdx="5" />	<!-- A -->
+		<button devIdx="100" contIdx="6" />	<!-- D -->
+		<button devIdx="112"  contIdx="7" />	<!-- P -->
+		<button devIdx="53"  contIdx="8" />	<!-- keypad 5 -->
+		<button devIdx="52"  contIdx="9" />
+		<button devIdx="54"  contIdx="10"/>
+	</device>
+	<device name="GlutSensorEmulatorDevice">
+		<sensor devIdx="0" contIdx="0">
+			<adjustment>
+				<translation x="0" y="0" z="0"/>
+				<scale x="100" y="100" z="100"/>
+			</adjustment>
+		</sensor>
+		<sensor devIdx="1" contIdx="1">
+			<adjustment>
+				<translation x="0" y="0" z="0"/>
+				<scale x="100" y="100" z="100"/>
+			</adjustment>
+		</sensor>
+	</device>
+</controller>

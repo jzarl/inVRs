@@ -1,0 +1,14 @@
+<!-- ************************** inputInterface.xml ************************  -->
+
+<!-- ************************ Snippet-2-1 - BEGIN ************************** -->
+<!-- IMPORTANT: replace line above with this snippet!                        -->
+	<module name="ControllerManager" configFile="VrpnController.xml"/>
+<!-- ************************ Snippet-2-1 - END **************************** -->
+
+
+<!-- ****************************** modules.xml ***************************  -->
+
+<!-- ************************ Snippet-2-2 - BEGIN ************************** -->
+<!-- IMPORTANT: replace line above with this snippet!                        -->
+	<module name="Navigation" configFile="wandNavigation.xml"/>
+<!-- ************************ Snippet-2-2 - END **************************** -->

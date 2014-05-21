@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<config>
+	<!-- This is the configuration for the inVRs Framework -->
+	<general>
+
+		<Interfaces>
+			<option key="inputInterfaceConfiguration" value="inputinterface_desktop.xml" />
+		</Interfaces>
+		<Modules>
+			<option key="modulesConfiguration" value="modules_desktop_server.xml" />
+		</Modules>
+		<Interfaces>
+			<option key="outputInterfaceConfiguration" value="outputinterface.xml" />
+		</Interfaces>
+
+		<SystemCore>
+			<option key="systemCoreConfiguration" value="systemCore.xml" />
+		</SystemCore>
+		
+		<ApplicationBase>
+			<option key="useLogFile" value="server.log" />
+<!-- 			<option key="debugLevel" value="warning" />  -->
+		</ApplicationBase>
+		
+		<OpenSGApplicationBase>
+			<option key="useCSM" value="false"/>
+<!-- 			<option key="csmConfigFile" value="mono.csm"/>  -->
+		</OpenSGApplicationBase>
+	</general>
+
+	<paths>
+		<root path="./" />
+		<path name="SystemCoreConfiguration" path="config-3DPhysics/systemcore/" />
+
+		<path name="Plugins" 
+			path="@inVRs_LIBRARY_DIR@"/>
+		<path name="ModulesConfiguration" path="config-3DPhysics/modules/" />
+		<path name="InputInterfaceConfiguration" path="config-3DPhysics/inputinterface/" />
+		<path name="OutputInterfaceConfiguration" path="config-3DPhysics/outputinterface/" />
+		
+		<!-- Paths for World DB Datastructure-->
+		<path name="WorldConfiguration" 
+			path="config-3DPhysics/systemcore/worlddatabase/" />
+		<path name="EnvironmentConfiguration" 
+			path="config-3DPhysics/systemcore/worlddatabase/environment/" />
+		<path name="EntityConfiguration" 
+			path="config-3DPhysics/systemcore/worlddatabase/entity/" />
+		<path name="TileConfiguration" 
+			path="config-3DPhysics/systemcore/worlddatabase/tile/" />
+			
+		<!-- Paths for User DB Datastructure-->
+		<path name="UserConfiguration" path="config-3DPhysics/systemcore/userdatabase/" />
+		<path name="AvatarConfiguration" 
+			path="config-3DPhysics/systemcore/userdatabase/avatar/" />
+
+		<path name="CursorConfig" 
+			path="config-3DPhysics/systemcore/userdatabase/cursorRepresentation/" />
+		<path name="CursorModelConfiguration" 
+			path="config-3DPhysics/systemcore/userdatabase/cursorModel/" />
+		
+		<!-- Path for TransformationManager -->
+		<path name="TransformationManagerConfiguration" 
+			path="config-3DPhysics/systemcore/transformationmanager/" />
+				
+		<!-- Path for Interfaces Datastructure -->
+		<path name="ControllerConfiguration" 
+			path="config-3DPhysics/inputinterface/controllermanager/" />
+		
+		<!-- Paths for Module Datastructure -->		
+		<path name="NavigationConfiguration" path="config-3DPhysics/modules/navigation/" />
+
+		<path name="PhysicsModuleConfiguration" path="config-3DPhysics/modules/physics/" />
+		<path name="SteeringModuleConfiguration" path="config-3DPhysics/modules/steering/" />
+
+		<path name="InteractionModuleConfiguration" 
+			path="config-3DPhysics/modules/interaction/" />
+		
+		<path name="NetworkConfiguration" path="config-3DPhysics/modules/network/" />
+			
+		<!-- Paths for Models-->
+		<path name="Models" path="models/" />
+		<path name="Tiles" path="models/tiles/" />
+		<path name="Entities" path="models/entities/" />
+		<path name="Skybox" path="models/skybox/" />
+		<path name="Highlighters" path="models/highlighters/" />		
+		<path name="Avatars" path="models/avatars/" />
+		<path name="HeightMaps" path="models/heightmaps/" />
+		<path name="CollisionMaps" path="models/collisionmaps/" />
+
+	</paths>
+</config>

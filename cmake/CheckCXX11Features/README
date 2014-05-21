@@ -1,0 +1,4 @@
+The C++11 Feature Tests have been written by Rolf Eike Beer.
+
+The version included here has been copied from git commit
+96cd2ce836b3ed940e0a6e17e3b550f31f81c6b2 of git://anongit.kde.org/scratch/dakon/cmake-cxx11

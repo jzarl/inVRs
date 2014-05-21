@@ -1,0 +1,28 @@
+# Build FFDlib --------------------------------------------------
+set (FFDLIB FFD)
+file(GLOB FFD_MAIN_HEADERS ffd/*.h)
+file(GLOB FFD_ACTION_HEADERS ffd/Actions/*.h)
+set(FFD_HEADERS ${FFD_MAIN_HEADERS} ${FFD_ACTION_HEADERS})
+file(GLOB_RECURSE FFD_SRCS ffd/*.cpp)
+
+add_library(${FFDLIB} STATIC ${FFD_SRCS})
+
+#OpenSG
+find_package(OpenSG REQUIRED )
+include_directories(${OpenSG_INCLUDE_DIRS})
+add_definitions(${OpenSG_DEFINITIONS})
+target_link_libraries(${FFDLIB} ${OpenSG_LIBRARIES})
+
+#GMTL
+include_directories (${GMTL_INCLUDE_DIRS})
+
+set(FFD_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR} PARENT_SCOPE)
+set(FFD_DEP_INCLUDE_DIRS ${GMTL_INCLUDE_DIRS} ${OpenSG_INCLUDE_DIRS} PARENT_SCOPE)
+set(FFD_LIBRARIES ${FFDLIB}	PARENT_SCOPE)
+set(FFD_DEP_LIBRARIES ${OpenSG_LIBRARIES} PARENT_SCOPE)
+
+install (TARGETS ${FFDLIB} DESTINATION ${FFD_TARGET_LIB_DIR})
+install (FILES ${FFD_MAIN_HEADERS} DESTINATION ${FFD_TARGET_INCLUDE_DIR}/ffd)
+install (FILES ${FFD_ACTION_HEADERS} DESTINATION ${FFD_TARGET_INCLUDE_DIR}/ffd/Actions)
+
+

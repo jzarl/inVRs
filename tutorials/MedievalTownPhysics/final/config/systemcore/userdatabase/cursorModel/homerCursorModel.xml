@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<cursorModel name="HomerCursorModel">
+	<arguments>
+		<arg key="animationSpeed" type="float" value="12"/>
+		<arg key="forwardThreshold" type="float" value="0.1"/>
+		<arg key="backwardThreshold" type="float" value="0.1"/>
+	</arguments>
+</cursorModel>

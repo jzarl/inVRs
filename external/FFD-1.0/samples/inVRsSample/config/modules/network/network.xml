@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<!DOCTYPE network SYSTEM "http://dtd.inVRs.org/network_v1.0a4.dtd">
+<network version="1.0a4">
+	<ports TCP="8083" UDP="8084"/>
+</network>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<navigation>
+	<models>
+		<translationmodel name="TranslationViewDirectionButtonStrafeModel">
+			<arguments>
+				<arg key="frontIdx" type="unsigned" value="3" />
+				<arg key="backIdx" type="unsigned" value="4" />
+				<arg key="leftIdx" type="unsigned" value="5" />
+				<arg key="rightIdx" type="unsigned" value="6" />
+			</arguments>
+		</translationmodel>
+		<orientationmodel name="OrientationAbsoluteDualAxisModel" angle="20">
+			<arguments>
+				<arg key="xAxisIdx" type="int" value="0" />
+				<arg key="yAxisIdx" type="int" value="1" />
+				<arg key="buttonIdx" type="int" value="1" />
+			</arguments>
+		</orientationmodel>
+		<speedmodel name="SpeedAbsoluteMultiButtonModel" speed="5">
+			<arguments>
+				<arg key="accelButtonIndices" type="string" value="3 4 5 6" />
+			</arguments>
+		</speedmodel>
+	</models>
+</navigation>

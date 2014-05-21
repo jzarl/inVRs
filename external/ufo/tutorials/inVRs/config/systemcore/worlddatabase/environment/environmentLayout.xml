@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<environmentLayout>
+	<tileGrid xSpacing="400" zSpacing="400"/>
+	<environment id="1" name="environment.xml" xLoc="0" zLoc="0"/>
+</environmentLayout>

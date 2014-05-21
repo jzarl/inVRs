@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<transformationManager>
+
+	<pipeList>
+
+		<!-- local Tracking Pipe -->
+		<pipe srcModuleName="InputInterface" dstModuleName="UserDatabase"
+			pipeType="Any" objectClass="Any" objectType="Any" objectId="Any"
+			fromNetwork="0">
+			<!-- MODIFIER -->
+			<modifier type="TransformationDistributionModifier">
+				<arguments>
+					<arg key="protocol" type="string" value="UDP" />
+				</arguments>
+			</modifier>
+			<!-- MODIFIER -->
+			<modifier type="TrackingDataWriter" />
+		</pipe>
+
+		<!-- external Tracking Pipe -->
+		<pipe srcModuleName="InputInterface" dstModuleName="UserDatabase"
+			pipeType="Any" objectClass="Any" objectType="Any" objectId="Any"
+			fromNetwork="1">
+			<!-- MODIFIER -->
+			<modifier type="TrackingDataWriter" />
+		</pipe>
+
+
+		<!--  LOCAL NAVIGATON PIPE -->
+		<pipe srcModuleName="NavigationModule" dstModuleName="TransformationManager"
+			pipeType="Any" objectClass="Any" objectType="Any" objectId="Any"
+			fromNetwork="0">
+			<modifier type="ApplyNavigationModifier" />
+			<modifier type="HeightMapModifier" />
+			<modifier type="CheckCollisionModifier">
+				<arguments>
+					<arg key="radius" type="float" value="1" />
+					<arg key="fileName" type="string" value="MedievalTownCollisionMap.wrl" />
+				</arguments>
+			</modifier>
+			<modifier type="TransformationDistributionModifier" />
+			<modifier type="UserTransformationWriter" />
+			<modifier type="CameraTransformationWriter">
+				<arguments>
+					<arg key="cameraHeight" type="float" value="1.8" />
+					<arg key="useGlobalYAxis" type="bool" value="true" />
+				</arguments>
+			</modifier>
+			<modifier type="ApplyUserTransformationModifier" />
+			<modifier type="AvatarTransformationWriter">
+				<arguments>
+					<arg key="clipRotationToYAxis" type="bool" value="true" />
+				</arguments>
+			</modifier>
+			<!-- Forward result to LOCAL CURSOR PIPE -->
+			<modifier type="TargetPipeTransformationWriter">
+				<arguments>
+					<arg key="srcId" type="unsigned" value="2"/>
+					<arg key="dstId" type="unsigned" value="2"/>
+					<arg key="pipeType" type="unsigned" value="2"/>
+					<arg key="objectClass" type="unsigned" value="0"/>
+					<arg key="objectType" type="unsigned" value="0"/>
+					<arg key="objectId" type="unsigned" value="0"/>
+					<arg key="fromNetwork" type="bool" value="false"/>
+				</arguments>
+			</modifier>
+		</pipe>
+
+		<!-- REMOTE NAVIGATON PIPE -->
+		<pipe srcModuleName="NavigationModule" dstModuleName="TransformationManager"
+			pipeType="Any" objectClass="Any" objectType="Any" objectId="Any"
+			fromNetwork="1">
+			<modifier type="UserTransformationWriter" />
+			<modifier type="ApplyUserTransformationModifier" />
+			<modifier type="HeightMapModifier" />
+			<modifier type="AvatarTransformationWriter">
+				<arguments>
+					<arg key="clipRotationToYAxis" type="bool" value="true" />
+				</arguments>
+			</modifier>
+		</pipe>
+
+		<!-- LOCAL CURSOR PIPE -->
+		<pipe srcModuleName="TransformationManager" dstModuleName="TransformationManager" pipeType="2" objectClass="Any" objectType="Any" objectId="Any" fromNetwork="0">
+			<modifier type="ApplyCursorTransformationModifier"/>
+ 			<modifier type="TransformationDistributionModifier"/>
+			<modifier type="CursorTransformationWriter"/>
+		</pipe>
+
+		<!-- REMOTE CURSOR PIPE -->
+		<pipe srcModuleName="TransformationManager" dstModuleName="TransformationManager" pipeType="2" objectClass="Any" objectType="Any" objectId="Any" fromNetwork="1">
+			<modifier type="MultiPipeInterrupter"/>
+			<modifier type="CursorTransformationWriter"/>
+		</pipe>
+
+		<pipe srcModuleName="InteractionModule" dstModuleName="WorldDatabase"
+			pipeType="Any" objectClass="Any" objectType="Any" objectId="Any"
+			fromNetwork="0">
+			<modifier type="ManipulationOffsetModifier" />
+			<modifier type="TransformationDistributionModifier" />
+			<modifier type="EntityTransformationWriter" />
+		</pipe>
+
+		<pipe srcModuleName="InteractionModule" dstModuleName="WorldDatabase"
+			pipeType="Any" objectClass="Any" objectType="Any" objectId="Any"
+			fromNetwork="1">
+			<modifier type="EntityTransformationWriter" />
+		</pipe>
+
+
+		<!-- PHYSICS PIPE -->
+		<pipe srcModule="10" dstModule="4" pipeType="Any" objectClass="0" objectType="Any" objectId="Any" fromNetwork="Any">
+		        <modifier type="PhysicsEntityTransformationWriterModifier"/>
+		</pipe>
+
+
+	</pipeList>
+</transformationManager>

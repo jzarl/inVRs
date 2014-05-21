@@ -1,0 +1,38 @@
+UFO - Universally Flying Objects
+================================
+
+Dependencies
+------------
+
+ - GMTL (>= 0.5.4, >= 0.6.0 recommended )
+ - cmake (>= 2.4)
+
+
+Optional libraries
+------------------
+
+ - inVRs ( >= 1.0alpha4 )
+
+Compiling and installing
+------------------------
+
+1) Make sure you have installed all the dependencies
+
+2) Configure user.cmake
+
+3) Build:
+
+# cd build
+
+# cmake ..
+OR:
+# cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local
+
+# make
+
+4) Install:
+
+# make install 
+
+Note: DO NOT set DESTDIR for "make install"! This will certainly not do what you expect.
+      Instead, set CMAKE_INSTALL_PREFIX either in user.cmake or as parameter to cmake.

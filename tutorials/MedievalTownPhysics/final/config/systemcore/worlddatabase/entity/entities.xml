@@ -1,0 +1,463 @@
+<?xml version="1.0"?>
+<entityTypes>
+
+	<entityType typeId="1" name="Box01" fixed="0" implementationClass="SimplePhysicsEntityType">
+		<representation copy="false">
+			<file type="VRML" name="box01.wrl" />
+			<transformation>
+				<scale x="0.9" y="0.9" z="0.9"/>
+			</transformation>
+		</representation>
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+			        <rigidBody version="1.0">
+			                <name value="Box01" />
+			                <mass value="1" />
+			                <offsetToDestination>
+			                        <translation x="0" y="0" z="0" />
+			                        <rotation x="0" y="1" z="0" angle="0" />
+			                </offsetToDestination>
+			                <geometry material="WOOD" version="1.0">
+			                        <box>
+			                                <boxSize x="0.9" y="0.9" z="0.9" />
+			                        </box>
+			                </geometry>
+			                <renderer visible="0" />
+			        </rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+	
+	<entityType typeId="2" name="Box02" fixed="0" implementationClass="SimplePhysicsEntityType">
+		<representation copy="false">
+			<file type="VRML" name="box02.wrl" />
+			<transformation>
+				<scale x="0.9" y="0.9" z="0.9"/>
+			</transformation>
+		</representation>		
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+			        <rigidBody version="1.0">
+			                <name value="Box01" />
+			                <mass value="1" />
+			                <offsetToDestination>
+			                        <translation x="0" y="0" z="0" />
+			                        <rotation x="0" y="1" z="0" angle="0" />
+			                </offsetToDestination>
+			                <geometry material="WOOD" version="1.0">
+			                        <box>
+			                                <boxSize x="0.9" y="0.9" z="0.9" />
+			                        </box>
+			                </geometry>
+			                <renderer visible="0" />
+			        </rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+	
+	<entityType typeId="3" name="Box03" fixed="0" implementationClass="SimplePhysicsEntityType">
+		<representation copy="false">
+			<file type="VRML" name="box03.wrl" />
+			<transformation>
+				<scale x="0.9" y="0.9" z="0.9"/>
+			</transformation>
+		</representation>
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+			        <rigidBody version="1.0">
+			                <name value="Box01" />
+			                <mass value="1" />
+			                <offsetToDestination>
+			                        <translation x="0" y="0" z="0" />
+			                        <rotation x="0" y="1" z="0" angle="0" />
+			                </offsetToDestination>
+			                <geometry material="WOOD" version="1.0">
+			                        <box>
+			                                <boxSize x="0.9" y="0.9" z="0.9" />
+			                        </box>
+			                </geometry>
+			                <renderer visible="0" />
+			        </rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+
+	<entityType typeId="4" name="Barrel" fixed="0" implementationClass="SimplePhysicsEntityType">
+		<representation copy="false">
+			<file type="VRML" name="Barrel1.wrl" />
+		</representation>
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+				<rigidBody version="1.0">
+					<name value="barrel" />
+					<mass value="20" />
+					<offsetToDestination>
+						<translation x="0" y="-0.625" z="0" />
+						<rotation x="1" y="0" z="0" angle="0" />
+					</offsetToDestination>
+					<geometry version="1.0">
+						<compositeGeometry>
+							<subGeometry mass="10">
+								<offsetToCenter>
+									<translation x="0" y="0" z="0" />
+									<rotation x="1" y="0" z="0" angle="0" />
+								</offsetToCenter>
+								<geometry material="WOOD" version="1.0">
+									<capsule>
+										<capsuleLength value="0.15" />
+										<capsuleRadius value="0.52" />
+									</capsule>
+								</geometry>
+							</subGeometry>
+							<subGeometry mass="10">
+								<offsetToCenter>
+									<translation x="0" y="0" z="0" />
+									<rotation x="1" y="0" z="0" angle="0" />
+								</offsetToCenter>
+								<geometry version="1.0">
+									<box>
+										<boxSize x="0.65" y="1.25" z="0.65" />
+									</box>
+								</geometry>
+							</subGeometry>
+						</compositeGeometry>
+					</geometry>
+					<renderer visible="0" />
+				</rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+
+	<entityType typeId="5" name="Tree01" fixed="1">
+		<representation copy="false">
+			<file type="VRML" name="genTree01c.wrl" />
+			<transformation>
+				<translation x="0" y="0" z="0" />
+				<rotation x="1" y="0" z="0" angle="0" />
+				<scale x="0.35" y="0.35" z="0.35" />
+			</transformation>
+		</representation>
+	</entityType>
+
+	<entityType typeId="41" name="SimpleSphere" fixed="0" implementationClass="SimplePhysicsEntityType">
+		<representation copy="false">
+			<file type="VRML" name="stone_ball.wrl" />
+			<transformation>
+				<translation x="0" y="0" z="0" />
+				<rotation x="1" y="0" z="0" angle="0" />
+				<scale x="0.5" y="0.5" z="0.5" />
+			</transformation>
+		</representation>
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+				<rigidBody version="1.0">
+					<name value="sphere" />
+					<mass value="10" />
+					<offsetToDestination>
+						<translation x="0" y="0" z="0" />
+						<rotation x="1" y="0" z="0" angle="0" />
+					</offsetToDestination>
+					<geometry material="STEEL" version="1.0">
+						<sphere>
+							<sphereRadius value="0.5" />
+						</sphere>
+					</geometry>
+					<renderer visible="0" />
+				</rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+
+	<entityType typeId="61" name="Bench" fixed="0" implementationClass="SimplePhysicsEntityType">
+		<representation copy="false">
+			<file type="VRML" name="bench.wrl" />
+			<transformation>
+				<scale x="0.5" y="0.5" z="0.5" />
+			</transformation>
+		</representation>
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+				<rigidBody version="1.0">
+					<name value="benchObject" />
+					<mass value="20" />
+					<offsetToDestination>
+						<!-- 					<translation x="0" y="0" z="0"/> -->
+						<translation x="0" y="-0.6" z="-0.2" />
+						<rotation x="1" y="0" z="0" angle="0" />
+					</offsetToDestination>
+					<geometry version="1.0">
+						<compositeGeometry>
+							<subGeometry mass="10">
+								<offsetToCenter>
+									<!-- 							<translation x="0" y="0.55" z="0"/> -->
+									<translation x="0" y="-0.325" z="-0.2" />
+									<rotation x="1" y="0" z="0" angle="0" />
+								</offsetToCenter>
+								<geometry version="1.0">
+									<box>
+										<boxSize x="2.6" y="0.55" z="0.9" />
+									</box>
+								</geometry>
+							</subGeometry>
+							<subGeometry mass="10">
+								<offsetToCenter>
+									<!-- 							<translation x="0" y="1.85" z="0.8"/> -->
+									<translation x="0" y="0.325" z="0.2" />
+									<rotation x="1" y="0" z="0" angle="0" />
+								</offsetToCenter>
+								<geometry version="1.0">
+									<box>
+										<boxSize x="2.6" y="0.75" z="0.2" />
+									</box>
+								</geometry>
+							</subGeometry>
+						</compositeGeometry>
+					</geometry>
+					<renderer visible="0" />
+				</rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+
+	<entityType typeId="63" name="FachwerkHaus01" fixed="1" implementationClass="SimplePhysicsEntityType">
+		<representation copy="false">
+			<file type="VRML" name="fw43_lowpoly_n1.wrl" />
+			<transformation>
+				<translation x="0" y="0" z="0" />
+				<rotation x="1" y="0" z="0" angle="0" />
+				<scale x="0.34" y="0.34" z="0.34" />
+			</transformation>
+		</representation>
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+				<rigidBody version="1.0">
+					<name value="wall" />
+					<geometry material="ASPHALT" version="1.0">
+						<triangleMesh>
+							<triangleMeshFile url="models/entities/fw43_lowpoly_n1_physics_0.34.wrl" />
+						</triangleMesh>
+					</geometry>
+					<renderer visible="0" />
+				</rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+
+	<entityType typeId="64" name="FachwerkHaus02" fixed="1" implementationClass="SimplePhysicsEntityType">
+		<representation copy="false">
+			<file type="VRML" name="fachwerk12_LOWPOLY_TS.wrl" />
+			<transformation>
+				<translation x="0" y="0" z="0" />
+				<rotation x="1" y="0" z="0" angle="0" />
+				<scale x="0.34" y="0.34" z="0.34" />
+			</transformation>
+		</representation>
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+				<rigidBody version="1.0">
+					<name value="wall" />
+					<geometry material="ASPHALT" version="1.0">
+						<triangleMesh>
+							<triangleMeshFile url="models/entities/fachwerk12_LOWPOLY_physics_0.34.wrl" />
+						</triangleMesh>
+					</geometry>
+					<renderer visible="0" />
+				</rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+
+	<entityType typeId="65" name="FachwerkHaus03" fixed="1" implementationClass="SimplePhysicsEntityType">
+		<representation copy="false">
+			<file type="VRML" name="fachwerk33T.wrl" />
+			<transformation>
+				<translation x="0" y="0" z="0" />
+				<rotation x="1" y="0" z="0" angle="0" />
+				<scale x="0.35" y="0.35" z="0.35" />
+			</transformation>
+		</representation>
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+				<rigidBody version="1.0">
+					<name value="wall" />
+					<geometry material="ASPHALT" version="1.0">
+						<triangleMesh>
+							<triangleMeshFile url="models/entities/fachwerk33t_physics_0.35.wrl" />
+						</triangleMesh>
+					</geometry>
+					<renderer visible="0" />
+				</rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+
+	<entityType typeId="66" name="Brunnen" fixed="1" implementationClass="SimplePhysicsEntityType">
+		<representation copy="false">
+			<file type="VRML" name="brunnen4T.wrl" />
+		</representation>
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+				<rigidBody version="1.0">
+					<name value="brunnen" />
+					<mass value="4" />
+					<offsetToDestination>
+						<translation x="0" y="-0.755" z="0" />
+						<rotation x="1" y="0" z="0" angle="0" />
+					</offsetToDestination>
+					<geometry version="1.0">
+						<compositeGeometry>
+							<subGeometry mass="1">
+								<offsetToCenter>
+									<translation x="0.675" y="-0.194286" z="0" />
+									<rotation x="1" y="0" z="0" angle="0" />
+								</offsetToCenter>
+								<geometry material="WOOD" version="1.0">
+									<box>
+										<boxSize x="0.15" y="1.1" z="1.56" />
+									</box>
+								</geometry>
+							</subGeometry>
+							<subGeometry mass="1">
+								<offsetToCenter>
+									<translation x="-0.675" y="-0.194286" z="0" />
+									<rotation x="1" y="0" z="0" angle="0" />
+								</offsetToCenter>
+								<geometry material="WOOD" version="1.0">
+									<box>
+										<boxSize x="0.15" y="1.1" z="1.56" />
+									</box>
+								</geometry>
+							</subGeometry>
+							<subGeometry mass="1">
+								<offsetToCenter>
+									<translation x="0" y="-0.194286" z="0.705" />
+									<rotation x="1" y="0" z="0" angle="0" />
+								</offsetToCenter>
+								<geometry material="WOOD" version="1.0">
+									<box>
+										<boxSize x="1.18" y="1.1" z="0.15" />
+									</box>
+								</geometry>
+							</subGeometry>
+							<subGeometry mass="1">
+								<offsetToCenter>
+									<translation x="0" y="-0.194286" z="-0.705" />
+									<rotation x="1" y="0" z="0" angle="0" />
+								</offsetToCenter>
+								<geometry material="WOOD" version="1.0">
+									<box>
+										<boxSize x="1.18" y="1.1" z="0.15" />
+									</box>
+								</geometry>
+							</subGeometry>
+							<subGeometry mass="1">
+								<offsetToCenter>
+									<translation x="-0.575" y="0.080714" z="0" />
+									<rotation x="1" y="0" z="0" angle="0" />
+								</offsetToCenter>
+								<geometry material="WOOD" version="1.0">
+									<box>
+										<boxSize x="0.05" y="1.55" z="0.3" />
+									</box>
+								</geometry>
+							</subGeometry>
+							<subGeometry mass="1">
+								<offsetToCenter>
+									<translation x="0.575" y="0.080714" z="0" />
+									<rotation x="1" y="0" z="0" angle="0" />
+								</offsetToCenter>
+								<geometry material="WOOD" version="1.0">
+									<box>
+										<boxSize x="0.05" y="1.55" z="0.3" />
+									</box>
+								</geometry>
+							</subGeometry>
+							<subGeometry mass="1">
+								<offsetToCenter>
+									<translation x="0" y="0.615714" z="0" />
+									<rotation x="1" y="0" z="0" angle="45" />
+								</offsetToCenter>
+								<geometry material="WOOD" version="1.0">
+									<box>
+										<boxSize x="1.18" y="0.12" z="0.12" />
+									</box>
+								</geometry>
+							</subGeometry>
+						</compositeGeometry>
+					</geometry>
+					<renderer visible="0" />
+				</rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+
+	<entityType typeId="67" name="Chapel" fixed="1" implementationClass="SimplePhysicsEntityType">
+		<representation copy="false">
+			<file type="VRML" name="chapel.wrl" />
+			<transformation>
+				<translation x="0" y="0" z="0" />
+				<rotation x="1" y="0" z="0" angle="0" />
+				<scale x="0.35" y="0.35" z="0.35" />
+			</transformation>
+		</representation>
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+				<rigidBody version="1.0">
+					<name value="chapel_physics" />
+					<geometry material="ASPHALT" version="1.0">
+						<triangleMesh>
+							<triangleMeshFile url="models/entities/chapel_physics_0.35.wrl" />
+						</triangleMesh>
+					</geometry>
+					<renderer visible="0" />
+				</rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+
+	<entityType typeId="68" name="Windmill" fixed="1" implementationClass="SimplePhysicsEntityType">
+		<representation copy="true">
+			<file type="VRML" name="windmill.wrl" />
+			<transformation>
+				<translation x="0" y="0" z="0" />
+				<rotation x="1" y="0" z="0" angle="0" />
+				<scale x="1.4" y="1.4" z="1.4" />
+			</transformation>
+		</representation>
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+				<rigidBody version="1.0">
+					<name value="windmill_physics" />
+					<geometry material="ASPHALT" version="1.0">
+						<triangleMesh>
+							<triangleMeshFile url="models/entities/windmill_physics_1.4.wrl" />
+						</triangleMesh>
+					</geometry>
+					<renderer visible="0" />
+				</rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+
+	<entityType typeId="100" name="TERRAIN21" fixed="1" implementationClass="SimplePhysicsEntityType">
+		<representation copy="false">
+			<!-- Just take an invalid model because we only want the physical representation -->
+			<file type="VRML" name="null.wrl" />
+		</representation>
+		<implementationClass>
+			<simplePhysicsEntityType version="1.0">
+				<rigidBody version="1.0">
+					<name value="terrain21" />
+					<geometry material="ASPHALT" version="1.0">
+						<heightField>
+							<heightFieldFile url="models/heightmaps/Terrain21.htmp" />
+						</heightField>
+					</geometry>
+					<renderer visible="0" />
+				</rigidBody>
+			</simplePhysicsEntityType>
+		</implementationClass>
+	</entityType>
+
+
+</entityTypes>

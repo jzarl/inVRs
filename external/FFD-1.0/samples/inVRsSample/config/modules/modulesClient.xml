@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!DOCTYPE modules SYSTEM "http://dtd.inVRs.org/modules_v1.0a4.dtd">
+<modules version="1.0a4">
+	<module name="Interaction" configFile="interaction.xml"/>
+	<module name="Navigation" configFile="navigation.xml"/>
+	<module name="Network" configFile="networkClient.xml"/>
+	<module name="Deformation" configFile="deformation.xml"/>
+</modules>

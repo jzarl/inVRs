@@ -1,0 +1,98 @@
+STEP2: Starting the physics module
+
+After we included the physics module in the last step we will now have a look at the startup of the
+physics module. The first thing we have to do is to obtain a pointer to the Physics module.
+Therefore we add a new variable physics in our source file which we initialize in the initializer
+list of our default constructor (i added a + sign here for each new entry):
+
+...
++ #include <inVRs/Modules/3DPhysics/Physics.h>
+...
++	Physics* physics;
+...
+	MedievalTownPhysics() :
+	...
+	scene(OSG::NullFC),
++	physics(NULL)
+	{
+...
+	
+The class Physics is the core class of the inVRs physics module (which implements the
+ModuleInterface). In order to get the pointer pointing to the module instance we have to wait until
+the module is loaded from the ApplicationBase/SystemCore. The best way to get this pointer is by
+using the initModulesCallback which is called for each module before it is configured (we overload
+the OpenSGApplicationBase method here):
+
++	void initModuleCallback(ModuleInterface* moduleInterface) {
++		if (moduleInterface->getName() == "Physics") {
++	        // get the pointer to the Physics module
++	        physics = dynamic_cast<Physics*>(moduleInterface);
++	        assert(physics);
++		} // if
++	} // initModuleCallback
+
+Because this method is called for every Module we have to check if the passed Module is really the
+physics module, e.g. by requesting the module name.
+Now that we have the physics pointer we can add the method calls to start, update and stop the
+physics calculations:
+At the end of the initialize() method we call the physics->start() method which starts the physics 
+simulation in a separate thread:
+
+...
+	bool initialize(const CommandLineArgumentWrapper& args) {
+...
++		physics->start();
+
+		return true;
+	} // init
+...
+
+Because we started the physics simulation we also have to stop it when the application is finished.
+This is done in the cleanup method:
+
+	void cleanup() {
++		physics->kill();
+		...
+	} // cleanup
+
+At last we call the update method from the physics module in our display method. This is needed in 
+order to synchronize the physics thread with the main application thread:
+
+...
+	void display(float dt) {
+		skybox.setupRender(activeCamera->getPosition()); // attach the SkyBox to the camera
+
++		physics->update(dt);
+
+...
+
+In order to build the application now we have to link the application against the Physics Module
+library, because we access the physics module functions directly. Usually this would be avoided by
+using an Interface to the Physics Module, but this is not implemented here. So let's add the
+necessary libraries in our CMakeLists.txt file:
+
+target_link_libraries (MedievalTownPhysics
+	inVRsSystemCore 
+...
+	irrXML
++	oops
++	inVRs3DPhysics)
+
+Now you can build and start the application. When having a look at the logfiles (server.log or
+client.log) you can find the output from the Physics module which shows the current load of the
+physics thread, e.g.:
+
+ (II) Thread 0xEE016950 Physics::run(): FPS = 60 / LOAD: 0.19%   (simulationTime = 839)
+
+This shows that the physics simulation is running. In the application this does not change anything
+because our entities are not physically modeled yet.
+
+BTW, please ignore the following messages in the client.log:
+ 
+ (II) Thread 0x5965B7B0 TransformationManager::step(): cannot find any pipe with id 131589 owned ...
+
+this comes from the implementation of the CursorTransformation distribution which is implemented
+not the way it was intended to be - but it does work although of the missing transformation pipe
+
+Ok, now that the physics simulation is running we will try to get our entities physically modeled -
+next step!

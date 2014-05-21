@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE environment SYSTEM "http://dtd.inVRs.org/environment_v1.0a4.dtd">
+<environment version="1.0a4">
+	<tileMap xDimension="1" zDimension="1">
+		1    
+	</tileMap>
+	<entryPoint xPos="0" yPos="15" zPos="100" xDir="0" yDir="0" zDir="-1"/>
+
+	<entity id="1" typeId="1">
+		<transformation>
+            <translation x="0" y="0" z="0"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+
+</environment>

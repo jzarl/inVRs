@@ -1,0 +1,41 @@
+#VRML V2.0 utf8
+
+Group {
+children [
+
+# Object "box" 
+Shape {
+appearance Appearance { 
+ material Material {
+  diffuseColor 0.698 0.698 0.698
+  specularColor 0 0 0
+  emissiveColor 0 0 0
+  shininess 1.000000
+  transparency 0.608000
+ }
+}
+geometry IndexedFaceSet {
+solid FALSE
+creaseAngle 0.785398
+coord Coordinate { 
+point [
+-2.69065e-08 -1.97208e-08 -0.2,
+1 -1.97208e-08 -0.2,
+1 -1.97208e-08 -0.025,
+-2.69065e-08 -1.97208e-08 -0.025,
+-2.69065e-08 1 -0.025,
+1 1 -0.025,
+1 1 -0.2,
+-2.69065e-08 1 -0.2]
+}
+
+coordIndex [
+ 0, 1, 2, 3, -1,
+ 7, 4, 5, 6, -1,
+ 4, 3, 2, 5, -1,
+ 6, 1, 0, 7, -1,
+ 7, 0, 3, 4, -1,
+ 5, 2, 1, 6, -1]}
+}
+]
+}

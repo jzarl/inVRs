@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE userDatabase SYSTEM "http://dtd.inVRs.org/userDatabase_v1.0a4.dtd">
+<userDatabase version="1.0a4">
+
+<!-- ************************ Snippet-2-4 - BEGIN ************************** -->
+	<avatar configFile="avatar.xml"/>
+<!-- ************************* Snippet-2-4 - END *************************** -->
+ 
+<!-- ************************ Snippet-4-3 - BEGIN ************************** -->
+	<cursorRepresentation configFile="handRepresentation.xml" />
+	<cursorTransformationModel configFile="homerCursorModel.xml" />
+<!-- ************************* Snippet-4-3 - END *************************** -->
+
+</userDatabase>

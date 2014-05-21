@@ -1,0 +1,165 @@
+<!-- Use only lower case letters for the attribute names !!! -->
+<!-- This file MUST contain one or more Menu-nodes at least !!! -->
+
+<!--
+    The "Menu"-Node describes a new menubar.
+
+    Attribute list: (Attributes with default values may be omitted.)
+
+    - name              The name of the menu
+    - scalexyz          Scales the menu by this value.                      (default value:    1)
+    - visible           Defines the visibility of the menu.                 (default value: true)
+    - xpos              Position in x-direction                             (default value:    0)
+    - ypos              Position in y-direction                             (default value:    0)
+    - zpos              Position in z-direction                             (default value:    0)
+    - pitch             Rotation of transvers axis in degree                (default value:    0)
+    - heading           Rotation of orthographic axis in degree             (default value:    0)
+    - visibilityanimation Defines which animation should be used for changing the visibility.
+                                                                            (default value: no animation)
+-->
+
+<Menu name="TestMenu" scalexyz="0.1" visible="true" xpos="0" ypos="2.25"
+      zpos="-1" pitch="0" heading="0" visibilityanimation="SimpleVisibility">
+
+    <!--
+        "Widgets"-nodes have to be nested in "Menu"-nodes.
+
+        Attribute list: (Attributes with default values may be omitted.)
+
+        - library           The path to the library containing the widget.
+	- label		    The text written on the widget
+        - classname         Classname of the widget in library.
+	- callbackPressed   The callback function called when the widget is pressed
+	- callbackReleased  The callback function called when the widget is released
+        - model             The model represents the widget, set to "render" if a new model should be rendered
+        - name              The name of the widget
+        - scalexyz          Scales the widget by this value.                (default value:     1)
+        - visible           Defines the visibility of the menu.             (default value:     true)
+        - xpos              Position in x-direction in menu-plane           (default value:     0)
+        - ypos              Position in y-direction in menu-plane           (default value:     0)
+        - clickanimation    Defines which animation should be performed on pressed/released-events.
+                                                                            (default value:     no animation)
+        - visibilityanimation Defines which animation should be used for changing the visibility.
+                                                                            (default value:     no animation)
+	Some widgets have additional attributes:
+	Bar and Background:
+	- scale_x, scale_y, scale_z	scales the widget in x, y and z axis
+	Radiobox and Checkbox:
+	- callbackSelected	This callback will be coalled once the widget is selected by the user
+	- callbackDeselected	This callback will be called once the widget is deselected by the user
+	Radiobox:
+	- groupName	all Radioboxes with the same groupName value are handled as a group;
+			only one Radiobox within a group can be selected
+    -->
+
+    <Widget name ="Bar" library="optimized/libWidgets/libWidgets" label="3DMenu" 
+	    classname="Bar" visible="true" scale_x="20" scale_y="1.25"
+        scale_z="1" xpos="0" ypos="-10" clickanimation="Spinning"/>
+    <Widget name="Background" library="optimized/libWidgets/libWidgets"
+        classname="Background" visible="true" scale_x="20" scale_y="10"
+	    scale_z="1" xpos="0" ypos="0"/>
+    <Widget name="Button1" library="optimized/libWidgets/libWidgets" label="Ok"
+	    classname="Button" callbackPressed="Button1_pressed" callbackReleased="Button1_released"
+	    visible="true" model="render" scalexyz="1" xpos="7" ypos="-1"
+        clickanimation="SimplePressed" visibilityanimation="SimpleVisibility"/>
+    <Widget name="Button2" library="optimized/libWidgets/libWidgets" label="Abbrechen"
+	    classname="Button" callbackPressed="Button2_pressed" callbackReleased="Button2_released"
+	    visible="true" model="render" scalexyz="1" xpos="9" ypos="-1"
+        clickanimation="AnimatedPressed" visibilityanimation="SimpleVisibility"/>
+    <Widget name="Radiobox1" library="optimized/libWidgets/libWidgets" label="Radiotest 1/1"
+	    classname="Radiobox" groupName="Radio1" callbackSelected="Radiobox1_selected"
+	    callbackDeselected="Radiobox1_deselected" visible="true" model="render"
+        scalexyz="1" xpos="1" ypos="-8" visibilityanimation="SimpleVisibility"/>
+    <Widget name="Radiobox2" library="optimized/libWidgets/libWidgets" label="Radiotest 1/2"
+	    classname="Radiobox" groupName="Radio1" callbackSelected="Radiobox2_selected"
+	    callbackDeselected="Radiobox2_deselected" visible="true" model="render"
+        scalexyz="1" xpos="1" ypos="-6.75" visibilityanimation="SimpleVisibility"/>
+    <Widget name="Radiobox3" library="optimized/libWidgets/libWidgets" label="Radiotest 1/3"
+	    classname="Radiobox" groupName="Radio1" callbackSelected="Radiobox3_selected"
+	    callbackDeselected="Radiobox3_deselected" visible="true" model="render"
+        scalexyz="1" xpos="1" ypos="-5.5" visibilityanimation="SimpleVisibility"/>
+    <Widget name="Checkbox1" library="optimized/libWidgets/libWidgets" label="Checkbox 1"
+	    classname="Checkbox" callbackSelected="Checkbox1_selected"
+	    callbackDeselected="Checkbox1_deselected" visible="true" model="render"
+        scalexyz="1" xpos="1" ypos="-4" visibilityanimation="SimpleVisibility"/>
+    <Widget name="Checkbox2" library="optimized/libWidgets/libWidgets" label="Checkbox 2"
+	    classname="Checkbox" callbackSelected="Checkbox2_selected"
+	    callbackDeselected="Checkbox1_deselected" visible="true" model="render"
+        scalexyz="1" xpos="1" ypos="-2.75" visibilityanimation="SimpleVisibility"/>
+    <Widget name="Radiobox4" library="optimized/libWidgets/libWidgets" label="Radiotest 2/1"
+	    classname="Radiobox" groupName="Radio2" callbackSelected="Radiobox4_selected"
+	    callbackDeselected="Radiobox4_deselected" visible="true" model="render"
+        scalexyz="1" xpos="10.5" ypos="-6.75" visibilityanimation="SimpleVisibility"/>
+    <Widget name="Radiobox5" library="optimized/libWidgets/libWidgets" label="Radiotest 2/2"
+	    classname="Radiobox" groupName="Radio2" callbackSelected="Radiobox5_selected"
+	    callbackDeselected="Radiobox5_deselected" visible="true" model="render"
+        scalexyz="1" xpos="10.5" ypos="-5.5" visibilityanimation="SimpleVisibility"/>
+
+    <!--
+        "Animation"-nodes describe animations for widgets. These nodes have no fixed position in the XML-file.
+
+        Attribute list: (Attributes with default values may be omitted.)
+
+        - name              The name of the animation
+        - library           The path to the library containing the animation.
+        - classname         Classname of the animation in library.
+        - distance          Distance which the widget will be moved.        (default value:     0.35)
+    -->
+
+    <Animation name="SimplePressed" library="optimized/libAnimations/libAnimations" classname="SimplePressed" distance="0.35"/>
+
+    <!--
+        "Animation"-nodes describe animations for widgets. These nodes have no fixed position in the XML-file.
+
+        Attribute list: (Attributes with default values may be omitted.)
+
+        - name              The name of the animation
+        - library           The path to the library containing the animation.
+        - classname         Classname of the animation in library.
+        - distance          Distance which the widget will be moved.        (default value:     0.35)
+        - speed             Movement speed [units per second]               (default value:     2.00)
+    -->
+
+    <Animation name="AnimatedPressed" library="optimized/libAnimations/libAnimations" classname="AnimatedPressed"/>
+
+    <!--
+        "Animation"-nodes describe animations for widgets. These nodes have no fixed position in the XML-file.
+
+        Attribute list: (Attributes with default values may be omitted.)
+
+        - name              The name of the animation
+        - library           The path to the library containing the animation.
+        - classname         Classname of the animation in library.
+    -->
+
+    <Animation name="SimpleVisibility" library="optimized/libAnimations/libAnimations" classname="SimpleVisibility"/>
+
+    <!--
+        "Animation"-nodes describe animations for widgets. These nodes have no fixed position in the XML-file.
+
+        Attribute list: (Attributes with default values may be omitted.)
+
+        - name              The name of the animation
+        - library           The path to the library containing the animation.
+        - classname         Classname of the animation in library.
+        - changeSpeed       Sets the animation speed [ delta alpha per second]
+                                                                            (default value:     1.00)
+    -->
+
+    <Animation name="FadedVisibility" library="optimized/libAnimations/libAnimations" classname="FadedVisibility"/>
+
+    <!--
+        "Animation"-nodes describe animations for widgets. These nodes have no fixed position in the XML-file.
+
+        Attribute list: (Attributes with default values may be omitted.)
+
+        - name              The name of the animation
+        - library           The path to the library containing the animation.
+        - classname         Classname of the animation in library.
+        - rotationSpeed     This parameter defines the rotation speed [ degrees per second]
+                                                                            (default value:     360.00)
+    -->
+
+    <Animation name="Spinning" library="optimized/libAnimations/libAnimations" classname="Spinning" rotationSpeed="180"/>
+
+</Menu>

@@ -1,0 +1,17 @@
+--- gmtl/Numerics/Eigen.h	2002-02-10 05:38:07.000000000 +0100
++++ gmtl_fixed/Numerics/Eigen.h	2009-02-13 14:00:57.000000000 +0100
+@@ -38,7 +38,13 @@
+ #ifndef _EIGEN_H
+ #define _EIGEN_H
+ 
+-#include <gmtl/gmtlConfig.h>
++//
++// DATE: 2009-02-13
++// PATCHED for inVRs (www.inVRs.org) by rlander (rlander@inVRs.org)
++// CHANGES: removed include for missing gmtlConfig.h / added include for assert.h
++//
++//#include <gmtl/gmtlConfig.h>
++#include <assert.h>
+ 
+ namespace gmtl
+ {

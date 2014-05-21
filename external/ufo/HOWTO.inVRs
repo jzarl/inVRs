@@ -1,0 +1,132 @@
+{{>toc}}
+
+h1. Enabling steering for your application
+
+h2. Prerequisites
+
+* inVRs revision r2207 or newer (or release version &gt;= 1.0 Alpha6)
+* Build inVRs with INVRS_ENABLE_UFO
+
+h2. Changes to your application
+
+Add the following code to the display loop of your application:
+<pre>
+// update ufo, i.e. the Steering Module:
+SystemCore::getModuleByName("Steering")->update(dt);
+</pre>
+
+h2. Changes to your configuration
+
+h3. generalConfig.xml
+
+Set the directory in which the steering configuration resides:
+<pre>
+<path name="SteeringModuleConfiguration" directory="config/modules/steering/" />
+</pre>
+
+h3. modules.xml
+
+Enable the steering module in your module configuration:
+<pre>
+<module name="Steering" cfgPath="ufoConfiguration.xml" />
+</pre>
+
+h3. ufoConfiguration.xml
+
+Create a suitable ufoConfiguration xml file for your application.
+
+If you just want to steer a single inVRs "Entity":http://dev.invrs.org/embedded/invrs/classEntity.html (let's assume an entity with an entity id of 28 in an environment with id 1) along a path, a simple configuration file might look like this:
+<pre>
+<?xml version="1.0"?>
+<!DOCTYPE ufoConfiguration SYSTEM "http://dtd.invrs.org/ufoConfiguration_v1.0a4.dtd">
+<ufoConfiguration version="1.0a4">
+<arguments>
+<arg key="pluginDirectories" value="/path/to/your/plugin/directory"/>
+</arguments>
+<pilot typename="Pilot">
+<steerable typename="InVRsSteerable">
+<arguments>
+<arg key="VMax" value="10"/>
+<arg key="environmentId" value="1"/>
+<arg key="entityId" value="28"/>
+</arguments>
+</steerable>
+<behaviour typename="ScaleBehaviour">
+<arguments>
+<arg key="scaleFactor" value="0.1"/>
+</arguments>
+<behaviour typename="FollowWaypointsBehaviour">
+<arguments>
+<arg key="waypoint" value="181.81 22.0 206.76"/>
+<arg key="waypoint" value="100.00 22.0 206.76"/>
+<arg key="epsilon" value="5.0"/>
+</arguments>
+</behaviour>
+</behaviour>
+</pilot>
+</ufoConfiguration>
+</pre>
+
+h2. Configuration
+
+In ufo, a steered entity is represented as a _Pilot_, which has a _Behaviour_ that determines its actions, and a _Steerable_ that connects the pilot with the steered object (in inVRs, the steered object normally is an Entity).
+
+So, each Pilot has exactly one Behaviour and one Steerable. If is possible to group several Pilots into a _Flock_. Swarming behaviours can then react to other Pilots in the same Flock.
+
+There are default implementations for the classes Flock and Pilot, which are normally sufficiant and don't have to be changed. For the classes Behaviour and Steerable, however, plugins are needed. The following standard plugins are distributed with ufo:
+
+Steerable:
+* InVRsSteerable
+
+Behaviour:
+* AlignmentBehaviour
+* AverageBehaviour
+* CachingBehaviour
+* CohesionBehaviour
+* DeltaMinBehaviour
+* FaceForwardBehaviour
+* FixedVelocityBehaviour
+* FollowPilotBehaviour
+* FollowWaypointsBehaviour
+* InverseBehaviour
+* RandomBehaviour
+* ScaleBehaviour
+* SeparationBehaviour
+* StrongestBehaviour
+
+Descriptions of these plugins can be found in their respective header files in source:/trunk/external/ufo/ufoplugins/.
+
+In the xml configuration file, each flock, pilot, behaviour, and steerable is described by its @typename@ attribute.
+This attribute must match a built-in type (i.e. @Flock@ or @Pilot@), a plugin-type (listed above), or a _template name_.
+If a template name is used, the attribute @fromTemplate@ must be set to @true@, and a matching template definition must be present in the configuration file.
+
+h3. Template definitions
+
+Most of the time, multiple Flocks, Pilots, Steerables, or Behaviours are almost identical, save for some minor difference in arguments.
+For this reason, templates are available.
+
+A template definition wraps around a Flock, Pilot, Steerable, or Behaviour definition, giving it a (unique) name.
+A definition referencing a template can then just use the template name as its @typename@ while setting the @fromTemplate@ attribute to @true@.
+Neither the template definition nor a definition referencing the template has to be complete, as long as they form a complete definition together.
+If both an "original" definition and the template it references define the same argument or child element, the original definition takes precedence over the template.
+
+The following xml snippet shows how to define and reference a template for a Pilot:
+<pre>
+<pilot typename="myPilotTemplate" fromTemplate="true">
+<steerable typename="InVRsSteerable">
+<arguments>
+<arg key="environmentId" value="1"/>
+<arg key="entityId" value="28"/>
+</arguments>
+</steerable>
+</pilot>
+<template name="myPilotTemplate">
+<behaviour typename="FixedVelocityBehaviour">
+<arguments>
+<arg key="velocity" value="0.0 1.0 0.0"/>
+</arguments>
+</behaviour>
+</template>
+</pre>
+
+

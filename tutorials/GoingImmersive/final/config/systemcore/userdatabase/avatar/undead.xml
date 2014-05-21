@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE avataraAvatar SYSTEM "http://dtd.inVRs.org/avataraAvatar_v1.0a4.dtd">
+<avataraAvatar version="1.0a4">
+  <name value="Undead"/>
+  <representation>
+    <file type ="Avatara MDL" name="undead/undead.mdl"/>
+    <transformation>
+      <translation x="0" y="0" z="0"/>
+      <rotation x="1" y="0" z="0" angleDeg="-90"/>
+      <scale x="-0.08" y="-0.08" z="0.08"/>
+    </transformation>
+  </representation>
+  <texture file="undead/undeadN.jpg"/>
+  <animations smooth="true" speed="2" default="standing">
+    <animation name="standing" file="undead/undead_standing.ani"/>
+    <animation name="walking" file="undead/undead_walking.ani"/>
+  </animations>
+</avataraAvatar>

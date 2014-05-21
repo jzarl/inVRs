@@ -1,0 +1,41 @@
+<!-- **************************** general.xml *****************************  -->
+
+<!-- ************************ Snippet-2-1 - BEGIN ************************** -->
+		<Modules>
+			<option key="modulesConfiguration" value="modules.xml" />
+		</Modules>
+		<Interfaces>
+			<option key="inputInterfaceConfiguration"
+					value="inputInterface.xml" />
+		</Interfaces>
+<!-- ************************* Snippet-2-1 - END *************************** -->
+
+<!-- ************************ Snippet-2-2 - BEGIN ************************** -->
+		<path name="InputInterfaceConfiguration"
+				directory="config/inputinterface/" />
+		<path name="ModulesConfiguration" directory="config/modules/" />
+<!-- ************************* Snippet-2-2 - END *************************** -->
+
+<!-- ************************ Snippet-2-3 - BEGIN ************************** -->
+		<!-- Path for Interfaces Datastructure -->
+		<path name="ControllerManagerConfiguration" 
+			directory="config/inputinterface/controllermanager/" />
+	
+		<!-- Paths for Module Datastructure -->		
+		<path name="NavigationModuleConfiguration"
+				directory="config/modules/navigation/" />
+<!-- ************************* Snippet-2-3 - END *************************** -->
+
+
+<!-- ************************* userDatabase.xml ***************************  -->
+
+<!-- ************************ Snippet-2-4 - BEGIN ************************** -->
+	<avatar configFile="avatar.xml"/>
+<!-- ************************* Snippet-2-4 - END *************************** -->
+
+
+<!-- **************************** modules.xml *****************************  -->
+
+<!-- ************************ Snippet-2-5 - BEGIN ************************** -->
+	<module name="Navigation" configFile="navigation.xml" /> 
+<!-- ************************* Snippet-2-5 - END *************************** -->

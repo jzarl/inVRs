@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!DOCTYPE entityTypes SYSTEM "http://dtd.inVRs.org/entityTypes_v1.0a4.dtd">
+<entityTypes version="1.0a4">
+	<entityType typeId="1" name="HighResBox" fixed="0" >
+		<representation copy="false">
+			<file type="VRML" name="high_res_box.wrl" />
+		</representation>
+	</entityType>
+
+</entityTypes>

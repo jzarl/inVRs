@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE navigation SYSTEM "http://dtd.inVRs.org/navigation_v1.0a4.dtd">
+<navigation version="1.0a4">
+    <translationModel type="TranslationSensorViewDirectionModel">
+        <arguments>
+            <arg key="sensorIndex" type="uint" value="1"/>
+        </arguments>
+    </translationModel>
+    <orientationModel type="OrientationDualAxisSensorViewDirectionModel" angle="1">
+        <arguments>
+            <arg key="xAxisIndex" type="int" value="0"/>
+<!--            <arg key="yAxisIndex" type="int" value="1"/> -->
+<!--            <arg key="buttonIndex" type="int" value="1"/> -->
+            <arg key="sensorIndex" type="int" value="1"/>
+        </arguments>
+    </orientationModel>
+    <speedModel type="SpeedAxisModel" speed="-5">
+        <arguments>
+            <arg key="axisIndex" type="int" value="1"/>
+            <arg key="minThreshold" type="float" value="0.2"/>
+        </arguments>
+    </speedModel>
+</navigation>

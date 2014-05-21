@@ -1,0 +1,71 @@
+inVRs - The interactive networked Virtual Reality system 
+========================================================
+
+What is inVRs ?
+---------------
+To improve the development process of Virtual Environments (VEs) and Networked 
+Virtual Environments (NVEs) the inVRs (interactive networked Virtual Reality 
+system) framework provides a clearly structured approach for the design of 
+highly interactive and responsive NVEs. It consists of three independent 
+modules, one for interaction, one for navigation, and one for network 
+communication, two interface layers to support a variety of output and input 
+devices, and a system core which stores and manages the state of the VE. It is 
+developed following Open Source principles (LGPL) and can be used freely. It 
+runs on Windows, Linux, and Mac.
+
+
+FIXME: This is just a quick makeup for a README file.
+
+Compiling and installation:
+---------------------------
+For details about the installation process please read the installation 
+instructions provided at:
+
+http://www.inVRs.org
+
+Compiling and installation via command line:
+--------------------------------------------
+
+1) Make sure your system satisfies the following dependencies:
+  
+  - OpenSG (Version 1.8)[1]
+  - CMake (Version 2.8.3 or above)[2]
+
+2) (OPTIONAL) Define the URLs to the installed packages in the user.cmake file.
+   For example on Linux systems the path where the osg-config binary
+   can be found has to be defined in the line:
+     set (OPENSG_BIN_DIR /usr/local/bin)
+   If nothing is specified CMake will try to find the paths by itself
+
+3) Change into the build directory
+  
+  # cd build
+
+4) Generate the build system via cmake, e.g.:
+
+  # cmake ../
+
+5) Build and install inVRs. For Linux e.g.:
+
+  # make
+  # make install
+
+Footnotes:
+----------
+
+[1] http://www.opensg.org/
+[2] http://www.cmake.org/
+
+Acknowlegdments:
+----------------
+inVRs has been developed at the Institute of Graphics and Parallel Processing of
+the Johannes Kepler University Linz, Austria.
+The architecture and the main developement of the initial version has been 
+carried out by Christoph Anthes, Roland Landertshamer and Helmut Bressler 
+between 2005 and 2009. Many other contributions from student projects have been
+integrated. 
+To finally release the source of the framework the code contributions have been 
+cleaned up and reformatted by Philipp Aumayr, Clemens Birklbauer, Roland Hackl, 
+Marlene Hochrieser, Roland Hopferwieser, Roland Landertshamer, Marina Lenger and 
+Johannes Zarl. Thanks for all your work !!!
+

@@ -1,0 +1,50 @@
+<!-- **************************** general.xml ****************************** -->
+
+<!-- ************************ Snippet-4-1 - BEGIN ************************** -->
+		<path name="InteractionModuleConfiguration" 
+				directory="config/modules/interaction/" />
+<!-- ************************* Snippet-4-1 - END *************************** -->
+
+
+<!-- **************************** modules.xml ****************************** -->
+
+<!-- ************************ Snippet-4-2 - BEGIN ************************** -->
+	<module name="Interaction" configFile="interaction.xml" />
+<!-- ************************* Snippet-4-2 - END *************************** -->
+
+
+<!-- ************************* userDatabase.xml **************************** -->
+
+<!-- ************************ Snippet-4-3 - BEGIN ************************** -->
+	<cursorRepresentation configFile="handRepresentation.xml" />
+	<cursorTransformationModel configFile="homerCursorModel.xml" />
+<!-- ************************* Snippet-4-3 - END *************************** -->
+
+
+<!-- *************************** modifiers.xml ***************************** -->
+
+<!-- ************************ Snippet-4-4 - BEGIN ************************** -->
+			<modifier type="ApplyCursorTransformationModifier" />
+			<modifier type="CursorTransformationWriter" />
+<!-- ************************* Snippet-4-4 - END *************************** -->
+
+<!-- ************************ Snippet-4-5 - BEGIN ************************** -->
+		<pipe srcComponentName="InteractionModule" dstComponentName="WorldDatabase"
+			pipeType="Any" objectClass="Any" objectType="Any" objectId="Any" 
+			fromNetwork="0">
+			<modifier type="ManipulationOffsetModifier"/>
+			<modifier type="TransformationDistributionModifier"/>
+			<modifier type="EntityTransformationWriter" />
+		</pipe>
+<!-- ************************* Snippet-4-5 - END *************************** -->
+
+
+<!-- **************************** general.xml ****************************** -->
+
+<!-- ************************ Snippet-4-6 - BEGIN ************************** -->
+		<path name="CursorRepresentationConfiguration" 
+				directory="config/systemcore/userdatabase/cursorRepresentation/" />
+		<path name="CursorTransformationModelConfiguration" 
+				directory="config/systemcore/userdatabase/cursorTransformationModel/" />
+<!-- ************************* Snippet-4-6 - END *************************** -->
+

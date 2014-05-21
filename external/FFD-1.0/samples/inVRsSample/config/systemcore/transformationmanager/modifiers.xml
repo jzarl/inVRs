@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE transformationManager SYSTEM "http://dtd.inVRs.org/transformationManager_v1.0a4.dtd">
+<transformationManager version="1.0a4">
+	<mergerList/>
+	<pipeList>
+		<pipe srcComponentName="NavigationModule" dstComponentName="TransformationManager" pipeType="Any" objectClass="Any" objectType="Any" objectId="Any" fromNetwork="0">
+			<modifier type="ApplyNavigationModifier"/>
+			<modifier type="TransformationDistributionModifier"/>
+			<modifier type="UserTransformationWriter"/>
+			<modifier type="CameraTransformationWriter">
+				<arguments>
+					<arg key="cameraHeight" type="float" value="1.8"/>
+					<arg key="useGlobalYAxis" type="bool" value="true"/>
+				</arguments>
+			</modifier>
+			<modifier type="ApplyCursorTransformationModifier"/>
+			<modifier type="CursorTransformationWriter"/>
+		</pipe>
+		<pipe srcComponentName="InteractionModule" dstComponentName="WorldDatabase" pipeType="Any" objectClass="Any" objectType="Any" objectId="Any" fromNetwork="0">
+			<modifier type="ManipulationOffsetModifier"/>
+			<modifier type="TransformationDistributionModifier"/>
+			<modifier type="EntityTransformationWriter"/>
+		</pipe>
+		<pipe srcComponentName="NavigationModule" dstComponentName="TransformationManager" pipeType="Any" objectClass="Any" objectType="Any" objectId="Any" fromNetwork="1">
+			<modifier type="UserTransformationWriter"/>
+		</pipe>
+	</pipeList>
+</transformationManager>

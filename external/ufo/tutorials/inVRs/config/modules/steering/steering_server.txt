@@ -1,0 +1,1060 @@
+UFOCFGPLAIN
+pluginDirectory "../../../../../install/lib/"
+pluginDirectory "../../../../../../../lib"
+/* *****************  Flock of Boids ************************ */
+immediate FLOCK Flock {
+	children {
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 28
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 29
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 30
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 31
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 32
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 33
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 34
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 35
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 36
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 37
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 38
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 39
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 40
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 41
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 42
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 43
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 44
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 45
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 46
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 47
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 48
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 49
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 50
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 51
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 52
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 53
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 54
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 55
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 56
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 57
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 58
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 59
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 60
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 61
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 62
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 63
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 64
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 65
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 66
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 67
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 68
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 69
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 70
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 71
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 72
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 73
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 74
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 75
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 76
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 77
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 78
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 79
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 80
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 81
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 82
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 83
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 84
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 85
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 86
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 87
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 88
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 89
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 90
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 91
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 92
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 93
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 94
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 95
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 96
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 97
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 98
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 99
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 100
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 101
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 102
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 103
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 104
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 105
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 106
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 107
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 108
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 109
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 110
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 111
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 112
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 113
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 114
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 115
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 116
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 117
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 118
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 119
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 120
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 121
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 122
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 123
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 124
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 125
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 126
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 127
+					}
+				}
+			}
+		}
+	}
+}
+template swarmSteerable STEERABLE InVRsSteerable {
+	parameters { /* set common parameters, but don't specify steered Entity: */
+		useSimplePhysicsEntity = false
+			VMax = 10
+	} 
+}
+template swarmPilot PILOT Pilot
+{
+	children {
+		immediate BEHAVIOUR CachingBehaviour {
+			parameters { deltaTMin = 0.04 }
+			children {
+				immediate BEHAVIOUR AverageBehaviour {
+					children {
+						immediate BEHAVIOUR ScaleBehaviour {
+							parameters { scaleFactor = 0.1 }
+							children {
+								immediate BEHAVIOUR FollowWaypointsBehaviour {
+									parameters { 
+										waypoint = "181.81 22.0 206.76"
+											epsilon = 0.0
+									} 
+								}
+							}
+						}
+						immediate BEHAVIOUR FaceForwardBehaviour { }
+						immediate BEHAVIOUR ScaleBehaviour {
+							parameters { scaleFactor = 5 }
+							children {
+								immediate BEHAVIOUR RandomBehaviour { }
+							}
+						}
+						immediate BEHAVIOUR AlignmentBehaviour { 
+							parameters { neighbourDistance = 15.0 }
+						}
+						immediate BEHAVIOUR CohesionBehaviour { 
+							parameters { neighbourDistance = 5.0 }
+						}
+						immediate BEHAVIOUR ScaleBehaviour {
+							parameters { scaleFactor = 5 }
+							children {
+								immediate BEHAVIOUR SeparationBehaviour { 
+									parameters { neighbourDistance = 1.0 }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

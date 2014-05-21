@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<!DOCTYPE network SYSTEM "http://dtd.inVRs.org/network_v1.0a4.dtd">
+<network version="1.0a4">
+	<ports TCP="8081" UDP="8082"/>
+	<!-- localIP value="192.168.0.77"/ -->  
+</network>

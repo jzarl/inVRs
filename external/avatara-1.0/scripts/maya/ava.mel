@@ -1,0 +1,632 @@
+// AvataraExport.mel				export script for avatara viewer
+// viewer and fileformat 		helmut garstenauer & martin garstenauer
+// scriptcode by 						marlene hochrieser 
+// mail 										enel@gmx.at
+// changed 									14.01.2006
+// versions 								maya 6.5
+
+//----------------------------------------------------------exp----------------------------------------------------------------------------------------------------------
+//main procedure, exports character and animations
+proc exp(string $avatar, string $vrKinematik[]){
+	
+if ($avatar != "..." && $vrKinematik[0] != "..." && $vrKinematik[1] != "..." && $vrKinematik[2] != "..."){
+
+//-----------------------initialize vars------------------------------------------------------------------------------------------------------------------------------
+
+	// if you need more joints than 20 change first index of restpose here:
+	matrix $restpose[30][16];
+	
+	string $path = `internalVar -uad`;
+	string $fileNameMdl = "model1.mdl";
+	string $fileNameAni = "model1.ani";
+	string $fname = `textField -query -text textf`;
+	
+	float $coord[], $coordNormal[], $allFaceNormal[], $face1[], $face2[], $face3[], $weightArray[], $head[], $tail[], $values[];
+	string $parent[], $parents[], $name16;
+	int $weightCnt, $len, $parSize, $index, $tokIndex, $parentId[];
+	float $weight, $animStart, $animEnd;
+	string $faceIndInfo[];																																					// result of polyInfo about face-vertices
+	string $faceNormalInfo[];																																				// result of polyInfo about face-normals
+	int $faceInd[];																																									// array for int-values of face-vertices
+	float $faceNormal[];																																						// array for int-values of face-normals
+	string $faceIndTokens[];																																				// array for tokens of face-vertices
+	string $faceNormalTokens[];																																			// array for tokens of face-vertices
+	string $uvMapTokens[];
+	string $uvTokens[];
+	int $uvInd[3];
+	float $uvCoords[];
+
+//----------------------get model information-------------------------------------------------------------------------------------------------------------------------
+	
+	string $skinClusterName = `findRelatedSkinCluster($avatar)`;
+	string $jointNames[] = `skinCluster -query -influence $skinClusterName`;												// joints relating to skin/mesh, first is root, child after parent
+
+	select $avatar;																																									// select mesh - used by following commands
+	int $geomCount[] = `polyEvaluate -v -f`;																												// # geomCount[0]=vertices geomCount[1]=faces
+	int $jCount = size($jointNames);																																// # joints
+	int $pCount = 0;																																								// # poses
+
+//-------------------------EXPORT MODEL--------------------------------------------------------------------------------------------------------------------------------
+	
+  $fileIDMdl = `fopen $fileNameMdl "w"`;
+	
+	// HEADER
+	fwrite $fileIDMdl "AVATARA";																																		// file tag (8 bytes)
+	fwrite $fileIDMdl "MODEL";																																			// file tag (12 bytes)
+	fwrite $fileIDMdl 0;																																						// 0: 4 bytes, empty string: 1 byte * 2 = 6 bytes
+	fwrite $fileIDMdl "";
+	fwrite $fileIDMdl "";
+	fwrite $fileIDMdl 2;																																						// file version 2
+	fwrite $fileIDMdl $geomCount[0];																																// # vertices
+	fwrite $fileIDMdl $geomCount[1];																																// # faces
+	
+	fwrite $fileIDMdl $jCount;																																			// # bones
+	fwrite $fileIDMdl 0;																																						// 3*4 Bytes reserved
+	fwrite $fileIDMdl 0;
+	fwrite $fileIDMdl 0;
+	
+	// VERTEXLIST
+	for ( $ind = 0; $ind < $geomCount[0]; $ind++){
+
+		$coord = `xform -query -translation -worldSpace ( $avatar + ".vtx[" + $ind +"]" )`;						// get each vertex
+		$allFaceNormal = `polyNormalPerVertex -q -xyz ( $avatar + ".vtx[" + $ind +"]" )`;							// get normalvector for 3 faces of each vertex
+		
+		fwrite $fileIDMdl $coord[0];																																	// coord y
+		fwrite $fileIDMdl $coord[1];																																	// coord x
+		fwrite $fileIDMdl $coord[2];																																	// coord z	
+		
+		// there is no command for getting vertex-normals 
+		// so calculate the vertexnormals by creating the mean of all associated facenormals
+		$face1[0] = $allFaceNormal[0];																																// get Normals of all 3 associated faces for current vertex
+		$face1[1] = $allFaceNormal[1];
+		$face1[2] = $allFaceNormal[2];
+		$face2[0] = $allFaceNormal[3];
+		$face2[1] = $allFaceNormal[4];
+		$face2[2] = $allFaceNormal[5];
+		$face3[0] = $allFaceNormal[6];
+		$face3[1] = $allFaceNormal[7];
+		$face3[2] = $allFaceNormal[8];
+
+		$coordNormal[0] = normalize($face1);																													// normalize Normals
+		$coordNormal[1] = normalize($face2);
+		$coordNormal[2] = normalize($face3);
+		
+		fwrite $fileIDMdl $coordNormal[0];																														// nv x
+		fwrite $fileIDMdl $coordNormal[1];																														// nv y
+		fwrite $fileIDMdl $coordNormal[2];																														// nv z
+			
+		$weightArray = `skinPercent -q -v $skinClusterName ( $avatar + ".vtx[" + $ind +"]" )`;
+		
+		$weightCnt = 0;																																								// count affecting bones
+		for( $i = 0; $i < $jCount; $i++){																															// $jCount = $arrSize
+			if ( $weightArray[$i] != 0.0) $weightCnt++;
+		}
+		fwrite $fileIDMdl $weightCnt;																																	// # of affecting bones
+		
+		for( $i = 0; $i < $jCount; $i++){
+			if ( $weightArray[$i] != 0.0 ){		
+				fwrite $fileIDMdl $i;																																			// index of affecting joint/bone
+				fwrite $fileIDMdl ($weightArray[$i]);																											// weight of affecting joint/bone
+			}
+		}
+	}
+
+	// FACELIST
+	for ( $ind = 0; $ind < $geomCount[1]; $ind++){
+
+		$faceIndInfo = `polyInfo -faceToVertex ( $avatar + ".f[" + $ind + "]" )`;											// get vertex indices for current face
+		tokenize $faceIndInfo[0] " :\n\r" $faceIndTokens;
+		$faceInd[0] = (int) $faceIndTokens[2];
+		$faceInd[1] = (int) $faceIndTokens[3];
+		$faceInd[2] = (int) $faceIndTokens[4];
+
+		fwrite $fileIDMdl $faceInd[0];																																// vertex index 1
+		fwrite $fileIDMdl $faceInd[1];																																// vertex index 2
+		fwrite $fileIDMdl $faceInd[2];																																// vertex index 3
+
+		fwrite $fileIDMdl 1;																																					// for smooth write 1
+		
+		$faceNormalInfo = `polyInfo -faceNormals ( $avatar + ".f[" + $ind + "]" )`;										// get vertex indices for current face
+		tokenize $faceNormalInfo[0] " :\n\r" $faceNormalTokens;
+		for ( $i = 2; $i < `size $faceNormalTokens`; $i++ ){
+			$faceNormal[`size $faceNormal`] = $faceNormalTokens[$i];
+		}
+		
+		fwrite $fileIDMdl $faceNormal[0];																															// nv x
+		fwrite $fileIDMdl $faceNormal[1];																															// nv y
+		fwrite $fileIDMdl $faceNormal[2];																															// nv z
+		
+//	for rgba use 128, 128, 128, 255 as bytes = 4286611584 as integer (4 bytes) 3 x for 3 indicies (hexacdode = FF 80 80 80)
+  	fwrite $fileIDMdl 4286611584;
+		fwrite $fileIDMdl 4286611584;
+		fwrite $fileIDMdl 4286611584;
+
+		$uvMapTokens = `polyListComponentConversion -ff -tuv $avatar.f[$ind]`;
+
+		if (size($uvMapTokens) == 2){																																// result is like xx.xx[1:3]
+			tokenize $uvMapTokens[1] "[\:\]" $uvTokens;
+			$tokIndex = (int) $uvTokens[size($uvTokens)-1];	
+			$uvInd[0] = $tokIndex;																																		// last three array entry
+			$uvInd[1] = $tokIndex-1;	
+			$uvInd[2] = $tokIndex-2;
+		} else if(size($uvMapTokens) == 4) {																												// result is like xx.xx[2] 3x
+			tokenize $uvMapTokens[1] "[\:\]" $uvTokens;
+			$uvInd[0] = (int) $uvTokens[size($uvTokens)-1];
+			tokenize $uvMapTokens[2] "[\:\]" $uvTokens;
+			$uvInd[1] = (int) $uvTokens[size($uvTokens)-1];
+			tokenize $uvMapTokens[3] "[\:\]" $uvTokens;
+			$uvInd[2] = (int) $uvTokens[size($uvTokens)-1];
+		} else if(size($uvMapTokens) == 3) {																												// result is like xx.xx[2] 2x + xx.xx[1:2] 1x
+			tokenize $uvMapTokens[1] "[\:\]" $uvTokens;
+			if (size($uvTokens) == 3){
+				$tokIndex = (int) $uvTokens[size($uvTokens)-1];	
+				$uvInd[0] = $tokIndex;																																	// last two array entry
+				$uvInd[1] = $tokIndex-1;
+				tokenize $uvMapTokens[2] "[\:\]" $uvTokens;
+				$uvInd[2] = (int) $uvTokens[size($uvTokens)-1];
+			} else {
+				$uvInd[0] = (int) $uvTokens[size($uvTokens)-1];
+				tokenize $uvMapTokens[2] "[\:\]" $uvTokens;
+				$tokIndex = (int) $uvTokens[size($uvTokens)-1];	
+				$uvInd[1] = $tokIndex;																																	// last two array entry
+				$uvInd[2] = $tokIndex-1;
+			}
+		}
+		
+		// now we have an uvInd[3] array, which includes 3 uv-indices!
+		// get the uv coords for this indices an write it into the export file
+		$uvCoords = `getAttr ($avatar + ".uv[" + $uvInd[0] +"]")`;
+		fwrite $fileIDMdl $uvCoords[0];																															// u-coord 
+		fwrite $fileIDMdl $uvCoords[1];																															// v-coord
+		
+		$uvCoords = `getAttr ($avatar + ".uv[" + $uvInd[1] +"]")`;
+		fwrite $fileIDMdl $uvCoords[0];																															// u-coord 
+		fwrite $fileIDMdl $uvCoords[1];																															// v-coord
+		
+		$uvCoords = `getAttr ($avatar + ".uv[" + $uvInd[2] +"]")`;
+		fwrite $fileIDMdl $uvCoords[0];																															// u-coord 
+		fwrite $fileIDMdl $uvCoords[1];																															// v-coord
+	}
+	
+	//create array for joints: parents, parentIds, restposes
+	for ($i = 0; $i < $jCount; $i++) {
+		$parents = `listRelatives -p -f -type "joint" $jointNames[$i]`;	
+		$parSize = `tokenize $parents[0] "|" $parent`;
+		if (size($parents) == 0) {																							
+			$parentId[$i] = -1;																																				// get id of parent joint
+		} else {
+			for ($j = 0; $j < $jCount; $j++){
+				if ((`strcmp $parent[$parSize-1] $jointNames[$j]`) == 0) {
+					$parentId[$i] = $j;																																		// get id of parent joint
+				}
+			}
+		}
+	}
+	
+	for ($i = 0; $i < $jCount; $i++) {
+		$values = `xform -q -m -ws $jointNames[$i]`;																								// get transformation matrix in restposition	
+		for ($k = 0; $k < 16; $k++) $restpose[$i][$k] = $values[$k];																// fill restpose matrix for all joints
+	}
+	
+	// BONELIST: transformation matrix - 3x4 floats, length - 1 float
+	for ($i = 0; $i < $jCount; $i++) {
+		$name16 = `substring $jointNames[$i] 1 15`;
+		fwrite $fileIDMdl $parentId[$i];																														// Id of parent bone
+		$len = 15-size($name16);
+	
+		if ($name16 == $vrKinematik[0]) {
+			fwrite $fileIDMdl "ArmUp.R        ";
+		} else if ($name16 == $vrKinematik[1]) {
+			fwrite $fileIDMdl "Head           ";
+		} else if ($name16 == $vrKinematik[2]) {
+			fwrite $fileIDMdl "Spine          ";
+		} else {							
+			for($j = 0; $j < $len; $j++) $name16 = $name16 + " ";																			// fill up 16 bytes								
+			fwrite $fileIDMdl $name16;
+		}	
+
+		fwrite $fileIDMdl ((float)$restpose[$i][0]);
+		fwrite $fileIDMdl ((float)$restpose[$i][1]);
+		fwrite $fileIDMdl ((float)$restpose[$i][2]);
+		
+		fwrite $fileIDMdl ((float)$restpose[$i][4]);
+		fwrite $fileIDMdl ((float)$restpose[$i][5]);
+		fwrite $fileIDMdl ((float)$restpose[$i][6]);
+		
+		fwrite $fileIDMdl ((float)$restpose[$i][8]);
+		fwrite $fileIDMdl ((float)$restpose[$i][9]);
+		fwrite $fileIDMdl ((float)$restpose[$i][10]);
+
+		fwrite $fileIDMdl ((float)$restpose[$i][12]);
+		fwrite $fileIDMdl ((float)$restpose[$i][13]);
+		fwrite $fileIDMdl ((float)$restpose[$i][14]);
+		
+		fwrite $fileIDMdl ((float)0.0);
+	}
+	
+	fflush $fileIDMdl;
+	fclose $fileIDMdl;
+	print "\nREADY with model!!!!\n";	
+
+	string $cmd = "convMdl.exe " + $fileNameMdl + " " + $fname + ".mdl";
+	string $smdl = `system $cmd`;																																	// call converter for Mdl (doubleTofloat)
+
+//-------------------------EXPORT ANIMATION-------------------------------------------------------------------------------------------------------------------------------
+	if (!(`radioButton -q -sl radioButton_n`)) {
+		int $fileIDAni = `fopen $fileNameAni "w"`;
+		float $keyFrames[];
+		int $act = 0;
+		int $is = 0;
+		
+		int $expFrom = (`intSliderGrp -q -v sliderFrom`);
+		int $expTo = (`intSliderGrp -q -v sliderTo`);
+		int $expStep = (`intSliderGrp -q -v sliderStep`);
+		int $ind = 0;
+		
+		if (`radioButton -q -sl radioButton_fts`) {
+			for ($i = $expFrom; $i < $expTo; $i+=$expStep) {
+				$keyFrames[$ind] = $i;
+				$ind++;
+			}
+			$pCount = size($keyFrames);
+		} else {
+			select -all;
+			string $dags[] = `selectedNodes -dagObjects`;
+			float $allkeyframes[] = `keyframe -query $dags`;
+			for ($i = 0; $i < size($allkeyframes); $i++){																							// check for all set keyframes (all!)
+				float $temp = $allkeyframes[$i];
+				for ($j = 0; $j < $i; $j++){
+					if ($allkeyframes[$j] == $temp){ 
+						$is = 1;
+						break;
+					}
+				}
+				if($is == 0) {
+					 $keyFrames[$act] = $allkeyframes[$i]; 
+					 $act++;
+				} else $is = 0;
+			}
+			$keyFrames = `sort $keyFrames`;
+			$pCount = size($keyFrames);
+		}
+		
+		int $keyTime;
+		float $rotation[3];
+		float $rot[];
+		float $quaternion[4];
+		float $location[3];
+		float $scale[3];
+		float $transform[16];
+		float $rest[16];
+		float $restParent[16];
+		float $restRoot[16];
+		float $mx[16];
+		float $mt[16];
+		
+		//write animation header
+		fwrite $fileIDAni "AVATARA";																																// file tag (8 bytes)
+		fwrite $fileIDAni "ANIMATION";																															// file tag (12 bytes)
+		fwrite $fileIDAni "";
+		fwrite $fileIDAni "";
+		fwrite $fileIDMdl 1;																																				// file version 1
+		fwrite $fileIDAni $jCount;																																	// # joints/bones
+		fwrite $fileIDAni $pCount;																																	// # poses
+		fwrite $fileIDAni 0;																																				// 2*4 Bytes reserved
+		fwrite $fileIDAni 0;
+		
+		//write poses
+		for ($eachKey in $keyFrames){																																// for each pose
+			currentTime $eachKey;
+			$keyTime = $eachKey*24;
+			fwrite $fileIDAni ((int)$keyTime);
+			
+			for ($j = 0; $j < $jCount; $j++){
+				if ($j == 0){
+					for ($k = 0; $k < 16; $k++) {
+						$rest[$k] = $restpose[$j][$k];
+					}
+					$transform = `xform -q -m -ws $jointNames[$j]`;																				// transform of current bone in current frame
+					$location = `joint -q -p -r $jointNames[$j]`;																					// position in parent space
+					
+					$mt = matMul($transform, inverse($rest));
+				} else {
+					for ($k = 0; $k < 16; $k++) {
+						$rest[$k] = $restpose[$j][$k];
+						$restParent[$k] = $restpose[$parentId[$j]][$k];
+						$restRoot[$k] = $restpose[0][$k];
+					}
+					$transform = `xform -q -m -ws $jointNames[$j]`;																				// transform of current bone in current frame
+					$transformP = `xform -q -m -ws $jointNames[$parentId[$j]]`;
+					
+					$mx = matMul(inverse($restParent), $transformP);
+					$mt = matMul($transform, inverse($mx));
+					$mt = matMul($mt, inverse($rest));
+				} 	
+				
+				//create a dummy-bone, copy transformation matrix to dummy, to read translation, rotation and scaling with "joint" command
+				select -cl;
+				joint -n "dummy_01";
+				xform -m $mt[0] $mt[1] $mt[2] $mt[3] $mt[4] $mt[5] $mt[6] $mt[7] $mt[8] $mt[9] $mt[10] $mt[11] $mt[12] $mt[13] $mt[14] $mt[15];
+				$location = `joint -q -p -r "dummy_01"`;																								// position in parent space
+				$scale = `joint -q -s "dummy_01"`;
+				$rot = `joint -q -angleX "dummy_01"`;
+				$rotation[2] = $rot[0];
+				$rot = `joint -q -angleY "dummy_01"`;
+				$rotation[0] = $rot[0];
+				$rot = `joint -q -angleZ "dummy_01"`;
+				$rotation[1] = $rot[0];
+				delete "dummy_01";
+				
+				$quaternion = eulerToQuat($rotation);
+				
+				fwrite $fileIDAni $quaternion[0];																												// quaternion (s, i, j, k) - 4 float
+				fwrite $fileIDAni $quaternion[1];
+				fwrite $fileIDAni $quaternion[2];
+				fwrite $fileIDAni $quaternion[3];
+				fwrite $fileIDAni $location[0];																													// location (x, y, z) - 3 float
+				fwrite $fileIDAni $location[1];
+				fwrite $fileIDAni $location[2];
+				fwrite $fileIDAni $scale[0];																														// scale (sx, sy, sz) - 3 float
+				fwrite $fileIDAni $scale[1];
+				fwrite $fileIDAni $scale[2];
+			}
+		}
+
+		fflush $fileIDAni;
+		fclose $fileIDAni;
+		print "\nREADY with animation!!!!\n";
+		$cmd = "convAni.exe " + $fileNameAni + " " + $fname + ".ani";
+		string $sani = `system $cmd`;																																// call converter for Ani (doubleTofloat)
+	}
+
+	print "\nREADY with converting!!!!\n\n";
+
+	//----------------------!!!!!!!!!!!!!!!!!!!!--------------------------------------------------------------------------------------------------------------------------
+	// since mel does not allow to initialize a matrix with dynamic variables like "matrix[$size1][$size2];"
+	// i print the following line, for changing the default size (default is max. 30 bones):
+	print "*********************************************************************\n";
+	print "* for using more bones than 30, please change melscript in line 17  *\n";
+	print "* matrix $[number of bones you use][16]                             *\n";	
+	print "*********************************************************************\n";
+		
+	} else print "Avatar must be set, leave no VR Kinematik values blank";	
+}
+
+//--------------------------------------------------some matrix methods-----------------------------------------------------------
+
+//calc inverse for 4x4 matrix
+proc float[] inverse(float $mat4[]) {
+	float $tmp[16], $inverseMat[16], $mat3[9], $ehm[16];
+	float $det4 = det4($mat4);
+	float $det3;
+	int $sign = 1;
+	$ehm[0] = 1.0;
+	$ehm[5] = 1.0;
+	$ehm[10] = 1.0;
+	$ehm[15] = 1.0;
+	if ($det4 == 0) return $ehm;
+	for ($i = 0; $i < 4; $i++) {
+		for ($j = 0; $j < 4; $j++){
+			$sign = 1-(($i+$j)%2)*2;
+			$mat3 = submatrix($mat4, $i, $j);
+			$det3 = det3($mat3);
+			$inverseMat[$i+$j*4] = ($det3*$sign/$det4);
+		}
+	}
+	
+	return $inverseMat;
+}
+
+//calc matrixMultiplication on array[16];
+proc float[] matMul(float $a[], float $b[]) {
+	float $c[16];
+	int $i;
+	int $ai = 0;
+	int $bi = 0;
+	for ($i = 0; $i < 16; $i++) {
+		$c[$i] = $a[$ai]*$b[$bi]+$a[$ai+1]*$b[$bi+4]+$a[$ai+2]*$b[$bi+8]+$a[$ai+3]*$b[$bi+12];
+		if ($i%4 == 3) $ai+=4;
+		$bi = ($bi+1)%4;
+	}
+	
+	return $c;
+}
+
+//calc determinate of 3x3 matrix
+proc float det3(float $m3[]) {
+	float $det;
+	$det =  $m3[0]*($m3[4]*$m3[8]-$m3[5]*$m3[7]);
+	$det += $m3[1]*($m3[5]*$m3[6]-$m3[3]*$m3[8]);
+	$det += $m3[2]*($m3[3]*$m3[7]-$m3[4]*$m3[6]);
+	
+	return $det;
+}
+
+//calc determinate of 4x4 matrix
+proc float det4(float $m4[]) {
+	float $sm3[9];
+	float $det3 = 0;
+	float $det4 = 0;
+	float $sign = 1;
+	
+	for ($i = 0; $i < 4; $i++) {
+		$sm3 = submatrix($m4, $i, 0);
+		$det3 = det3($sm3);
+		$det4 = $det4 + ($sign*$m4[$i*4]*$det3);
+		$sign = $sign*-1;
+	}
+	
+	return $det4;
+}
+
+//calc 3x3 submatrix from 4x4 matrix 
+proc float[] submatrix(float $m4[], int $i, int $j) {
+	float $m3[9];
+	int $k, $i, $ki, $jl;
+	for ($k = 0; $k < 4; $k++) {
+		if ($i > $k) $ki = $k;
+		else if ($i < $k) $ki = $k-1;
+		for ($l = 0; $l < 4; $l++) {
+			if ($j > $l) $jl = $l;
+			else if ($j < $l) $jl = $l-1;
+			if ($k != $i && $l != $j) $m3[$ki*3+$jl] = $m4[$k*4+$l]; 
+		}
+	}
+	
+	return $m3;
+}
+
+//calc quaternion from euler
+proc float[] eulerToQuat(float $rot[]) {
+	float $quat[4];
+	
+	float $k1 = (cosd($rot[0]/2.0));
+	float $k2 = (cosd($rot[1]/2.0));
+	float $k3 = (cosd($rot[2]/2.0));
+	float $s1 = (sind($rot[0]/2.0));
+	float $s2 = (sind($rot[1]/2.0));
+	float $s3 = (sind($rot[2]/2.0));
+	
+	$quat[0] = $k1*$k2*$k3-$s1*$s2*$s3;
+	$quat[1] = $s1*$s2*$k3+$k1*$k2*$s3;
+	$quat[2] = $s1*$k2*$k3+$k1*$s2*$s3;
+	$quat[3] = $k1*$s2*$k3-$s1*$k2*$s3;
+	
+	return $quat;
+}
+
+//-------------------------------------------------clear vr-kinematik bones----------------------------------------------------------
+proc string[] clearVR(string $vrKinematik[]) {
+	int $i[] = `textScrollList -query -selectIndexedItem textListKinematik`;
+	
+	if ($i[0] == 1){
+		text -edit -label "..." labelArm;
+		$vrKinematik[0] = "";
+	}else if ($i[0] == 2){
+		text -edit -label "..." labelHead;
+		$vrKinematik[1] = "";
+	}else if ($i[0] == 3){
+		text -edit -label "..." labelSpine;
+		$vrKinematik[2] = "";
+	}
+
+	return $vrKinematik;	
+}
+
+//--------------------------------------------------set avatar model----------------------------------------------------------
+proc string setVR(string $avatar) {
+	string $selObj[] = `ls -sl`;
+	if (size($selObj) > 1){
+		print "for setting avatar: select single shape";
+		text -edit -label "..." labelAvatar;
+	} else {
+		$avatar = $selObj[0];
+		text -edit -label $avatar labelAvatar;
+	}
+
+	return $avatar;
+}
+
+//--------------------------------------------------assign vr-kinematik bones-------------------------------------------------
+proc string[] assignVR(string $vrKinematik[]) {
+	int $i[] = `textScrollList -query -selectIndexedItem textListKinematik`;
+	string $selObj[] = `ls -sl`;
+	if (size($selObj) > 1){
+		print "no assignement for multiple objects or non-joint: select a single joint";
+	} else {
+		if ($i[0] == 1){
+			text -edit -label $selObj[0] labelArm;
+			$vrKinematik[0] = $selObj[0];
+		}else if ($i[0] == 2){
+			text -edit -label $selObj[0] labelHead;
+			$vrKinematik[1] = $selObj[0];
+		}else if ($i[0] == 3){
+			text -edit -label $selObj[0] labelSpine;
+			$vrKinematik[2] = $selObj[0];
+		}
+	}
+
+	return $vrKinematik;
+}
+
+//----------------------------------------------------AvataraExport-UI------------------------------------------------------
+global proc AvataraExport() {
+	global string $avatar;
+	global string $vrKinematik[3];
+	string $fname = "default";
+	$avatar = "...";
+	$vrKinematik[0] = "...";
+	$vrKinematik[1] = "...";
+	$vrKinematik[2] = "...";
+	
+	$animStart = `playbackOptions -q -ast`;
+	$animEnd = `playbackOptions -q -aet`;
+	
+	//avoid "object not found.." exception on creating a window (closing a window does not delete)
+	if (`window -exists avaWindow`) deleteUI avaWindow;
+	window -iconName "Avatara Export" avaWindow;
+	
+		columnLayout -columnAttach "both" 5 -rowSpacing 10 -columnWidth 150 -adjustableColumn true;	
+			frameLayout -label "Avatara" -labelAlign "center" -borderStyle "etchedOut";
+				columnLayout;
+					button -label "Set avatar" -align "center" -command "$avatar = `setVR $avatar`" buttonSet;
+					text -label $avatar labelAvatar;
+				setParent ..;
+			setParent ..;
+		setParent ..;
+		
+		columnLayout -columnAttach "both" 5 -rowSpacing 10 -columnWidth 150 -adjustableColumn true;	
+			frameLayout -label "VR Kinematik" -labelAlign "center" -borderStyle "etchedOut";
+				rowColumnLayout -numberOfColumns 2;
+					textScrollList -numberOfRows 3 -append "ArmUp.R" -append "Head" -append "Spine" -selectIndexedItem 1 textListKinematik;
+					columnLayout;
+						text -label $vrKinematik[0] labelArm;
+						text -label $vrKinematik[1] labelHead;
+						text -label $vrKinematik[2] labelSpine;
+					setParent ..;
+				columnLayout;
+					button -label "Assign" -align "center" -command ("$vrKinematik = `assignVR $vrKinematik`") buttonAssign;
+					button -label "Clear" -align "center" -command ("$vrKinematik = `clearVR $vrKinematik`") buttonClear;
+				setParent ..;
+			setParent ..;
+		setParent ..;
+		
+		columnLayout -columnAttach "both" 5 -rowSpacing 10 -columnWidth 150 -adjustableColumn true; 	
+			frameLayout -label "Frames" -labelAlign "center" -borderStyle "etchedOut";
+				columnLayout -cal "left";
+					radioCollection;
+						radioButton -label "use from/to/step settings"  radioButton_fts;
+						radioButton -label "export all frames (using from/to)" -select radioButton_ft;
+						radioButton -label "no animation export (only model)" radioButton_n;
+					text -label "from:" -annotation "Export starts with this frame";
+					intSliderGrp -min $animStart -max $animEnd -fieldMinValue $animStart -fieldMaxValue $animEnd -step 1 -field true sliderFrom; 
+					text -label "to:" -annotation "Export ends with this frame";
+					intSliderGrp -min $animStart -max $animEnd -fieldMinValue $animStart -fieldMaxValue $animEnd -step 1 -field true sliderTo;
+					text -label "step:" -annotation "Export every x frame";
+					intSliderGrp -min $animStart -max $animEnd -fieldMinValue $animStart -fieldMaxValue $animEnd -step 1 -field true sliderStep;
+				setParent ..;
+			setParent ..;
+		setParent ..;
+		
+		columnLayout -columnAttach "both" 5 -rowSpacing 10 -columnWidth 150 -adjustableColumn true;	
+			frameLayout -label "Filename" -labelAlign "center" -borderStyle "etchedOut";
+				columnLayout;
+					textField -w 100 -tx $fname textf;
+				setParent ..;
+			setParent ..;
+		setParent ..;
+		
+		columnLayout -columnAttach "both" 5 -rowSpacing 10 -columnWidth 150 -adjustableColumn true;	
+			frameLayout -label "Export" -labelAlign "top" -borderStyle "etchedOut";
+				columnLayout;
+					button -label "Start export" -align "center" -command "$avatar = `exp $avatar $vrKinematik`" buttonExport;
+				setParent ..;
+			setParent ..;
+		setParent ..;
+	
+	intSliderGrp -e -v $animStart sliderFrom;
+	intSliderGrp -e -v $animEnd sliderTo;
+	intSliderGrp -e -v 10 sliderStep;
+	
+	showWindow avaWindow;
+};

@@ -1,0 +1,19 @@
+Enabling support for the inVRs framework
+========================================
+
+1) Download inVRs
+   The inVRs framework is available from:
+   http://www.inVRs.org
+
+2) Unpack and install according to the inVRs README file.
+   Note: if you want to install inVRs to a directory other than the default
+   one, call cmake with a parameter like "-DCMAKE_INSTALL_PREFIX=/usr/local".
+
+   If you install inVRs without defining the install prefix, the inVRs source
+   directory is used.
+
+3) Configure ufo with inVRs support:
+
+   # cd build
+   # cmake .. -DinVRs_ROOT_DIR=/path/to/inVRs
+

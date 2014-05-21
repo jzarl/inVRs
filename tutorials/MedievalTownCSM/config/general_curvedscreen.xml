@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<config>
+	<!-- This is the configuration for the inVRs Framework -->
+	<general>
+
+		<Interfaces>
+			<option key="inputInterfaceConfiguration" value="inputinterface_curvedscreen.xml" />
+			<option key="outputInterfaceConfiguration" value="outputinterface.xml" />
+		</Interfaces>
+		<Modules>
+			<option key="modulesConfiguration" value="modules_curvedscreen.xml" />
+		</Modules>
+
+		<SystemCore>
+			<option key="systemCoreConfiguration" value="systemCore_cave.xml" />
+		</SystemCore>
+		
+		<OpenSGApplicationBase>
+			<option key="useCSM" value="true"/>
+			<option key="csmConfigFile" value="curvedscreen.config"/>
+		</OpenSGApplicationBase>
+	</general>
+
+	<paths>
+		<root path="./" />
+		<path name="SystemCoreConfiguration" path="config/systemcore/" />
+
+		<path name="Plugins" 
+			path="../../lib"/>
+		<path name="ModulesConfiguration" path="config/modules/" />
+		<path name="InputInterfaceConfiguration" path="config/inputinterface/" />
+		<path name="OutputInterfaceConfiguration" path="config/outputinterface/" />
+		
+		<!-- Paths for World DB Datastructure-->
+		<path name="WorldConfiguration" 
+			path="config/systemcore/worlddatabase/" />
+		<path name="EnvironmentConfiguration" 
+			path="config/systemcore/worlddatabase/environment/" />
+		<path name="EntityConfiguration" 
+			path="config/systemcore/worlddatabase/entity/" />
+		<path name="TileConfiguration" 
+			path="config/systemcore/worlddatabase/tile/" />
+			
+		<!-- Paths for User DB Datastructure-->
+		<path name="UserConfiguration" path="config/systemcore/userdatabase/" />
+		<path name="AvatarConfiguration" 
+			path="config/systemcore/userdatabase/avatar/" />
+
+		<path name="CursorConfig" 
+			path="config/systemcore/userdatabase/cursorRepresentation/" />
+		<path name="CursorModelConfiguration" 
+			path="config/systemcore/userdatabase/cursorModel/" />
+		
+		<!-- Path for TransformationManager -->
+		<path name="TransformationManagerConfiguration" 
+			path="config/systemcore/transformationmanager/" />
+				
+		<!-- Path for Interfaces Datastructure -->
+		<path name="ControllerConfiguration" 
+			path="config/inputinterface/controllermanager/" />
+		
+		<!-- Paths for Module Datastructure -->		
+		<path name="NavigationConfiguration" path="config/modules/navigation/" />
+
+		<path name="InteractionModuleConfiguration" 
+			path="config/modules/interaction/" />
+		
+		<path name="NetworkConfiguration" path="config/modules/network/" />
+			
+		<!-- Paths for Models-->
+		<path name="Models" path="models/" />
+		<path name="Tiles" path="models/tiles/" />
+		<path name="Entities" path="models/entities/" />
+		<path name="Skybox" path="models/skybox/" />
+		<path name="Highlighters" path="models/highlighters/" />		
+		<path name="Avatars" path="models/avatars/" />
+		<path name="HeightMaps" path="models/heightmaps/" />
+		<path name="CollisionMaps" path="models/collisionmaps/" />
+	</paths>
+</config>

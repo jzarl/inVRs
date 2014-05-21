@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wiideviceserver>
+	<network>
+		<client host="localhost" port="8082" controllerID="255"/>
+		<updateRate stepsPerSecond="30"/>
+	</network>
+	<wii>
+		<bluetoothAddress value="00:21:BD:11:F2:2C"/>
+		<sensorBar ledDistance="20"/>
+		<reportWiimotePosition value="true" xOffset="0" yOffset="30" zOffset="100"/>
+		<reportNunchuk value="true"/>
+	</wii>
+</wiideviceserver>

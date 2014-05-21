@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<handRepresentation>
+	<openedHand>
+		<model url="models/entities/hand.wrl" />
+		<transformation>
+			<translation xOffset="0" yOffset="0" zOffset="0" />
+			<rotation axisX="0" axisY="0" axisZ="1" angleDeg="90" />
+			<scale xSize="0.5" ySize="0.5" zSize="0.5" />
+		</transformation>
+	</openedHand>
+	<closedHand>
+		<model url="models/entities/hand_closed.wrl" />
+		<transformation>
+			<translation xOffset="0" yOffset="0" zOffset="0" />
+			<rotation axisX="0" axisY="0" axisZ="1" angleDeg="90" />
+			<scale xSize="0.5" ySize="0.5" zSize="0.5" />
+		</transformation>
+	</closedHand>
+</handRepresentation>

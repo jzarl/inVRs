@@ -1,0 +1,16 @@
+Boid-Modell
+===========
+
+Boid-Modelle wurden von Alexander Wilhelm <alexander.wilhelm@ufg.ac.at> für 
+die "Lange Nacht der Forschung" 2005 erstellt.
+
+
+
+Dateiliste:
+-----------
+
+ + boid_all.WRL
+ + boid_down_reo.WRL
+ + boid_mid_reo.WRL
+ + boid_up_reo.WRL
+ + maps/boidtop_sl.png

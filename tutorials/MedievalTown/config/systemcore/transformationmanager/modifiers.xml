@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE transformationManager SYSTEM "http://dtd.inVRs.org/transformationManager_v1.0a4.dtd">
+<transformationManager version="1.0a4">
+	<mergerList/>
+	<pipeList>
+		<pipe srcComponentName="NavigationModule" 
+				dstComponentName="TransformationManager" pipeType="Any" 
+				objectClass="Any" objectType="Any" objectId="Any" 
+				fromNetwork="0">
+			<modifier type="ApplyNavigationModifier"/>
+
+<!-- **************************** Snippet-3-1 ****************************** -->
+
+<!-- **************************** Snippet-3-2 ****************************** -->
+
+<!-- **************************** Snippet-5-3 ****************************** -->
+
+			<modifier type="UserTransformationWriter"/>
+			<modifier type="CameraTransformationWriter">
+			
+<!-- **************************** Snippet-3-3 ****************************** -->
+
+			</modifier>
+			<modifier type="AvatarTransformationWriter">
+				<arguments>
+					<arg key="clipRotationToYAxis" type="bool" value="true"/>
+				</arguments>
+			</modifier>
+
+<!-- **************************** Snippet-4-4 ****************************** -->
+
+		</pipe>
+
+<!-- **************************** Snippet-4-5 ****************************** -->
+
+<!-- **************************** Snippet-5-4 ****************************** -->
+	
+<!-- **************************** Snippet-5-5 ****************************** -->
+
+	</pipeList>
+</transformationManager>

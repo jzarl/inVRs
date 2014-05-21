@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE userDatabase SYSTEM "http://dtd.inVRs.org/userDatabase_v1.0a4.dtd">
+<userDatabase version="1.0a4">
+  <avatar configFile="undead.xml"/>
+  <!--
+	<userTransformationModel name="HeadPositionUserTransformationModel">
+		<arguments>
+			<arg key="test" type="unsigned" value="13"/>
+		</arguments>
+	</userTransformationModel>
+	-->
+	<cursorRepresentation configFile="handRepresentation.xml" />
+	<cursorTransformationModel configFile="homerCursorModel.xml" />
+</userDatabase>

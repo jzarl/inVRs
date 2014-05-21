@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<modules>
+	<module name="Navigation" cfgPath="navigation_desktop.xml" /> 
+	<module name="Interaction" cfgPath="interaction.xml" />
+	<module name="Network" cfgPath="network_server.xml" />
+	<module name="Steering" cfgPath="steering_server.xml" /> 
+</modules>

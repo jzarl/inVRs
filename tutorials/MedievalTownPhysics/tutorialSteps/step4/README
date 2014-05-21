@@ -1,0 +1,60 @@
+STEP4: Update interaction model for physical interaction
+
+In the last step the physical representations for the entities in the virtual world were added. Now
+we will have a look at the interaction implementation. The current implementation was designed to
+work with standard EntityTypes which have no physical representation. In order to be able to
+manipulate physically simulated entities we have to change the manipulation model used by the
+Interaction module.
+
+The first thing we have to do is to register the factory for the new manipulation model at the
+Interaction module. Therefore we add following lines in our source code:
+
+...
++ #include <inVRs/Modules/3DPhysics/PhysicsHomerManipulationActionModel.h>
+...
+	void initModuleCallback(ModuleInterface* moduleInterface) {
+		if (moduleInterface->getName() == "Physics") {
+...
+		} // if
++		else if (moduleInterface->getName() == "Interaction") {
++			((Interaction*)moduleInterface)->registerStateActionModelFactory(
++					new PhysicsHomerManipulationActionModelFactory);
++		} // if
+	} // initModuleCallback
+...
+
+This causes the PhysicsHomerManipulationActionModelFactory to be registered at the Interaction
+module right before the interaction configuration file is loaded. In order to use the registered
+model now we have to change the configuration of the interaction module (interaction.xml):
+
+-	<manipulationActionModel name="HomerManipulationActionModel">
+-		<arguments>
+-			<arg key="usePickingOffset" type="bool" value="true" />
+-		</arguments>
+-	</manipulationActionModel>
++	<manipulationActionModel name="PhysicsHomerManipulationActionModel"/>
+
+We remove the previous entry for the manipulationActionModel and replace it with a new one using the
+PhysicsHomerManipulationActionModel.
+
+When you rebuild and restart your application now the interaction with the objects should look
+better now. What you may have recognized is that the manipulated object is always a little behind 
+the cursor when moving. So let me explain what happens here exactly:
+
+When you change to manipulation state by pressing the mouse button the cursor will be animated in
+direction of the object by the HomerCursorModel. As soon as the hand has reached the object the
+CreateCursorSpringConnectorEvent is triggered. This event creates (as the name says) a
+CursorSpringConnector object, which is composed of a RigidBody representing the cursor and a joint
+which connects the cursor RigidBody with the RigidBody of the entity which should be manipulated.
+The created RigidBody for the cursor has no collision geometry so that it can't collide with any
+objects. The mass of this RigidBody is set to a very high value so that the RigidBody of the Entity
+which should be manipulated can't affect the cursor's transformation (this should always be steered
+by the user input). The created joint acts like a spring and damper system. This allows to pick up
+objects with a low mass easier than objects with a high mass (like it should be in real world). But
+because of this spring/damper system the manipulated objects always lag behind the cursor a bit.
+
+I think this is enough for now, for more details like on the porting of this application on the
+CAVE/CurvedScreen or on details about the physics module just write a mail to rlander@inVRs.org
+
+ 
+ 

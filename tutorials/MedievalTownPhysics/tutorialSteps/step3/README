@@ -1,0 +1,291 @@
+STEP3: Make entities simulated by the physics module
+
+In the previous steps the integration of the physics module into the application and the startup, 
+and shutdown of the module was shown.
+
+In this step we will update the used entities so that they are simulated by the physics simulation.
+Additionally we will add a Renderer class which allows us to view the world how it looks from the
+physics simulation point of view (collision geometries instead of textured 3D models).
+
+We will begin with the application code and have a look at the entities afterwards. At first we need
+to register some classes at the physics module which will be needed later on for loading physical
+simulated entities based on TriangleMeshes (used for static objects like houses) and on HeightField
+data (used for the terrain). Again the + signs indicate that the lines should be inserted:
+
+...
++ #include <inVRs/tools/libraries/oops/OpenSGTriangleMeshLoader.h>
++ #include <inVRs/tools/libraries/oops/HtmpHeightFieldLoader.h>
+...
++    oops::OpenSGTriangleMeshLoader triMeshLoader;
++    oops::HtmpHeightFieldLoader heightFieldLoader;
+...
+	void initModuleCallback(ModuleInterface* moduleInterface) {
+...
+	        assert(physics);
+
++	        // get the XMLLoader and set the factories
++	        oops::XMLLoader* physicsLoader = physics->getXMLLoader();
++	        physicsLoader->setTriangleMeshLoader(&triMeshLoader);
++	        physicsLoader->setHeightFieldLoader(&heightFieldLoader);
+		} // if
+... 
+
+As the names say the OpenSGTriangleMeshLoader is used to load TriangleMesh Collision Geometries with
+the help of model loading functions provided by OpenSG. The HtmpHeightFieldLoader is able to load 
+the HeightMap files (which are also used in the original MedievalTown application) and generate a 
+HeightField collision geometry. These loaders are passed to the XMLLoader class of the Physics 
+module so that the collision geometries can be loaded when specified in the Entity XML file.
+
+The next thing we will integrate is the rendering of the physics view. For this we need a factory 
+class which can generate Renderer objects which are then used by the different RigidBodies in order 
+to visualize their collision geometries:
+
+...
++ #include <inVRs/tools/libraries/oops/OpenSGRendererFactory.h>
+...
++    oops::OpenSGRendererFactory rendererFactory;
+...
+	void initModuleCallback(ModuleInterface* moduleInterface) {
+		if (moduleInterface->getName() == "Physics") {
++			// set root node for physics renderer factory (renderer allows to display the physics
++			// objects instead of the entity models, which can be useful for debugging)
++	        rendererFactory.setRoot(root);
+...
+	        physicsLoader->setHeightFieldLoader(&heightFieldLoader);
++	        physicsLoader->setRendererFactory(&rendererFactory);
+		} // if
+...
+
+Again we are using an OpenSG implementation since we use the OpenSG scene graph. In the
+initModuleCallback method we pass the root node to the renderer so that the physics view can be
+attached below this node. We also have to pass this factory to the XMLLoader of the physics module
+so that a new Renderer instance can be created for each RigidBody if specified.
+
+Now that the renderer is integrated we also want to be able to switch between the default view and
+the physics visualization. We will switch between these two views by pressing the button with the
+index 7 (which corresponds to the key 'p' -for physics- on the keyboard) of the controller. In order
+to get a notification when this button is pressed we will use a callback method and an object which 
+helps us to register this callback. I won't go much into detail here because that's not the topic, i
+hope the method names are self-explanatory.
+
+...
++ #include <inVRs/InputInterface/ControllerButtonChangeCB.h>
+...
++    bool showPhysicsObjects;
++	ControllerButtonChangeCB<MedievalTownPhysics> buttonCallback;
+...
+	MedievalTownPhysics() :
+...
+	physics(NULL),
++	showPhysicsObjects(false)
+	{
+...
+	bool initialize(const CommandLineArgumentWrapper& args) {
+...
++		buttonCallback.setSource(controllerManager->getController());
++		buttonCallback.setTarget(this, &MedievalTownPhysics::buttonChangeCallback);
++		buttonCallback.activate();
+...
++	void buttonChangeCallback(int buttonIndex, int newButtonValue) {
++		if (buttonIndex == 7 && newButtonValue != 0) {
++			showPhysicsObjects = !showPhysicsObjects;
++			beginEditCP(scene);
++				scene->setActive(!showPhysicsObjects);
++			endEditCP(scene);
++			physics->getSimulation()->setObjectsVisible(showPhysicsObjects);
++		} // if
++	} // buttonChangeCallback
+
+When the button with index 7 (key p) is pressed then the rendering of the default scene (which was 
+loaded by the WorldDatabase) is deactivated and the objects managed by the physics simulation are
+rendered (and vice versa at the next button press).
+
+When you build and start this application now and press the 'p' key you will see nothing else than
+the skybox. This is because the entities have no physical representation yet. These representations
+will be added now.
+
+Therefore we have to open the configuration file 
+"config/systemcore/worlddatabase/entity/entities.xml". In this file the used entityTypes of our
+applications are defined. To each of these entityTypes we will now add a physical representation. I 
+won't describe each definition here but show the main principles on the example of a box and a 
+barrel.
+
+Starting with the first EntityType with the name "Box01". In order to allow the instances of this
+EntityType (=entities) to be simulated by the physics module we must change the class type of the 
+EntityType. By default the class "EntityType" is used in order to load such an entity type. To 
+change this we have to add the attribute implementationClass:
+
+	<entityType typeId="1" name="Box01" fixed="0" implementationClass="SimplePhysicsEntityType">
+
+Now the class SimplePhysicsEntityType is used instead of the default EntityType class. The
+SimplePhysicsEntityType extends the default functionality by adding a single RigidBody to the
+Entity. This RigidBody is used as physical representation of the entity and the transformation of
+this RigidBody is mapped (more or less) automatically to the transformation of the Entity.
+
+Now that the class type is changed we still have to add the definition of the RigidBody to the
+configuration. Therefore we add another XML element called <implementationClass> after the 
+<representation> section of the entity:
+
+		</representation>
++		<implementationClass>
++			<simplePhysicsEntityType version="1.0">
++			        <rigidBody version="1.0">
++			                <name value="Box01" />
++			                <mass value="1" />
++			                <offsetToDestination>
++			                        <translation x="0" y="0" z="0" />
++			                        <rotation x="0" y="1" z="0" angle="0" />
++			                </offsetToDestination>
++			                <geometry material="WOOD" version="1.0">
++			                        <box>
++			                                <boxSize x="0.9" y="0.9" z="0.9" />
++			                        </box>
++			                </geometry>
++			                <renderer visible="0" />
++			        </rigidBody>
++			</simplePhysicsEntityType>
++		</implementationClass>
+	</entityType>
+
+Let's see what happens here. In the implementationClass node we define the type (which must match
+to the implementationClass attribute). Inside this element we define the RigidBody. The RigidBody
+is called "Box01" and it gets a mass of 1. Then the offsetToDestination is defined. This element
+allows to define the offset between the entity's pivot point and the center point of the RigidBody.
+In our case the center of the 3D model of the box and the RigidBody are the same. Next the geometry
+will be described. We want our geometry to use the material WOOD, which should approximate the
+friction values. Furthermore our geometry should be of type box with an edge length of 0.9. At last
+we add a renderer node which tells our configuration loader to register a renderer object at the
+RigidBody. This renderer will then later on display the RigidBody in the physics view.
+
+Ok, that's all we have to do for the box. If you start the application now you will see that at the
+original box stack at the right one box is missing. What happened with this box is that it was
+falling downwards because of the gravity. Because we don't have a physical representation of the
+terrain yet the box just falls downwards. In order to avoid this you can set the entity type to 
+fixed="1" and restart the application. When you change into the physics view now you will see the
+box at it's place.
+
+Since we want to interact we should change the fixed attribute of the box to "0" again. Next we will
+continue with the physical descriptions of the other objects. For the other boxes we can use the
+same description like we used for the first one. Let's have a look at the description for the
+barrel now. At first we must define the implementationClass again:
+
+	<entityType typeId="4" name="Barrel" fixed="0" implementationClass="SimplePhysicsEntityType">
+
+Next comes the definition:
+
+		</representation>
++		<implementationClass>
++			<simplePhysicsEntityType version="1.0">
++				<rigidBody version="1.0">
++					<name value="barrel" />
++					<mass value="20" />
++					<offsetToDestination>
++						<translation x="0" y="-0.625" z="0" />
++						<rotation x="1" y="0" z="0" angle="0" />
++					</offsetToDestination>
++					<geometry version="1.0">
++						<compositeGeometry>
++							<subGeometry mass="10">
++								<offsetToCenter>
++									<translation x="0" y="0" z="0" />
++									<rotation x="1" y="0" z="0" angle="0" />
++								</offsetToCenter>
++								<geometry material="WOOD" version="1.0">
++									<capsule>
++										<capsuleLength value="0.15" />
++										<capsuleRadius value="0.52" />
++									</capsule>
++								</geometry>
++							</subGeometry>
++							<subGeometry mass="10">
++								<offsetToCenter>
++									<translation x="0" y="0" z="0" />
++									<rotation x="1" y="0" z="0" angle="0" />
++								</offsetToCenter>
++								<geometry version="1.0">
++									<box>
++										<boxSize x="0.65" y="1.25" z="0.65" />
++									</box>
++								</geometry>
++							</subGeometry>
++						</compositeGeometry>
++					</geometry>
++					<renderer visible="0" />
++				</rigidBody>
++			</simplePhysicsEntityType>
++		</implementationClass>
+	</entityType>
+
+This description has some differences compared to the box description. The first change here is that
+the offsetToDestination entry has a correction in the Y-axis. The reason for this is that the pivot
+point of the 3D model is located at the bottom instead of the center. Thus the offset from the
+center point of the physical model to the center/pivot point of the 3D geometry is in the negative
+Y direction. Next the geometry which is used is called compositeGeometry. This geometry type can be
+used in order to combine multiple geometries to one single collision geometry. In our case we are
+combining a capsule and a sphere in order to get the flat endings of the barrel and the round
+surface in the middle. For each of these sub geometries a mass is defined, also the offset to the 
+center of the collision geometry (=offsetToCenter) can be specified. That's all what is needed for
+representing the barrel.
+
+There are further geometry types which i won't mention here all in detail, but you can find the DTDs
+for the physical definitions in the dtd folder, which should help you find out which geometry types
+are available and how they can be defined. 
+
+One more thing which should be mentioned is that we need to add a new entityType for representing
+the terrain. In our application the terrain is defined as a tile, but a tile in inVRs can not be
+extended and therefore can not contain a physical representation. Thus we need to add a new entity
+which has no 3D model, but contains a RigidBody for representing the terrain in the physics
+simulation:
+
++	<entityType typeId="100" name="TERRAIN21" fixed="1" implementationClass="SimplePhysicsEntityType">
++		<representation copy="false">
++			<!-- Just take an invalid model because we only want the physical representation -->
++			<file type="VRML" name="null.wrl" />
++		</representation>
++		<implementationClass>
++			<simplePhysicsEntityType version="1.0">
++				<rigidBody version="1.0">
++					<name value="terrain21" />
++					<geometry material="ASPHALT" version="1.0">
++						<heightField>
++							<heightFieldFile url="models/heightmaps/Terrain21.htmp" />
++						</heightField>
++					</geometry>
++					<renderer visible="0" />
++				</rigidBody>
++			</simplePhysicsEntityType>
++		</implementationClass>
++	</entityType>
+
+This entity uses the heightmap file from the terrain which is also used in the application for
+setting the user navigation to the correct height value. In order to use this entity now in our
+virtual world we have to add it in the environment definition (environment.xml):
+
++	<entity id="100" typeId="100">
++		<transformation>
++			<translation x="200" y="0" z="200"/>
++			<rotation x="0.00" y="1.00" z="0.00" angle="0.00"/>
++			<scale x="1.00" y="1.00" z="1.00"/>
++		</transformation>
++	</entity>
+ 
+The new entity is inserted at position (200,200) because the heighmap has it's center in the middle
+while the environment's (0,0) point is in the left upper corner (when viewed from the top). Since
+the tile has a size of 400x400 the rigidbody has to have an offset of 200 in both axes. 
+
+For the remaining definitions please see the entity type configuration file contained in the step3
+folder. You can simply copy it over the original entities.xml file in order to get all physical
+representations.
+
+When you start the application now (nearly) each object should have a physical representation. One
+thing which you might have noticed already is that when you interact with a physically simulated
+object the entity might be teleported, or it tends to drift downwards when you hold it. This is
+because of the manipulation model we are using in the Interaction module. This model just calculates
+the new transformation of the entity based on the cursor (=hand) and simply sets this transformation
+to the new entity. Besides this the physics simulation calculates the new transformation of the
+RigidBody and also tries to update this transformation.
+
+In order to solve this problem we have to change the manipulation model of the Interaction module.
+-> see next step 
+
+ 

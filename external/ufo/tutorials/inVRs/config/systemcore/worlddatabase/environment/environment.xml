@@ -1,0 +1,900 @@
+<?xml version="1.0"?>
+<environment>
+	<map xDimension="1" zDimension="1">
+	1    
+	</map>
+	<entryPoint xPos="268" yPos="30" zPos="183" xDir="-1" yDir="0" zDir="0.4"/>
+	
+	<entity id="1" typeId="63">
+		<transformation>
+			<translation x="228.52" y="9.40" z="177.17"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="2" typeId="64">
+		<transformation>
+			<translation x="219.24" y="9.10" z="177.49"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="4" typeId="64">
+		<transformation>
+			<translation x="207.83" y="9.22" z="211.86"/>
+			<rotation x="0.00" y="1.00" z="0.00" angle="143.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="5" typeId="63">
+		<transformation>
+			<translation x="228.30" y="8.60" z="213.79"/>
+			<rotation x="0.00" y="1.00" z="0.00" angle="199.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="6" typeId="65">
+		<transformation>
+			<translation x="197.66" y="8.50" z="183.67"/>
+			<rotation x="0.00" y="-1.00" z="0.00" angle="51.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="7" typeId="67">
+		<transformation>
+			<translation x="250.93" y="7.75" z="202.63"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="8" typeId="64">
+		<transformation>
+			<translation x="238.93" y="9.30" z="178.61"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="3" typeId="66">
+		<transformation>
+			<translation x="194.59" y="10.50" z="205.00"/>
+			<rotation x="0.00" y="1.00" z="0.00" angle="123.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="9" typeId="4">
+		<transformation>
+			<translation x="205.66" y="8.94" z="186.19"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="10" typeId="4">
+		<transformation>
+			<translation x="204.51" y="8.91" z="186.90"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="11" typeId="4">
+		<transformation>
+			<translation x="203.24" y="8.89" z="187.67"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="12" typeId="4">
+		<transformation>
+			<translation x="215.73" y="9.20" z="183.08"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="13" typeId="4">
+		<transformation>
+			<translation x="230.23" y="9.43" z="182.99"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="14" typeId="1">
+		<transformation>
+			<translation x="235.70" y="9.90" z="184.00"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="15" typeId="2">
+		<transformation>
+			<translation x="236.80" y="9.90" z="184.00"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="16" typeId="2">
+		<transformation>
+			<translation x="236.25" y="10.80" z="184.00"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="18" typeId="61">
+		<transformation>
+			<translation x="218.68" y="8.72" z="203.96"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="19" typeId="61">
+		<transformation>
+			<translation x="213.25" y="9.48" z="208.63"/>
+			<rotation x="0.00" y="-1.00" z="0.00" angle="40.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="20" typeId="61">
+		<transformation>
+			<translation x="250.55" y="7.97" z="198.31"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="21" typeId="41">
+		<transformation>
+			<translation x="224.90" y="9.30" z="215.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="22" typeId="41">
+		<transformation>
+			<translation x="225.57" y="9.30" z="217.16"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<!-- reddish sphere: -->
+	<entity id="23" typeId="43">
+		<transformation>
+			<translation x="224.40" y="9.40" z="213.69"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="17" typeId="5">
+		<transformation>
+			<translation x="238.35" y="8.00" z="212.33"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="24" typeId="5">
+		<transformation>
+			<translation x="243.45" y="8.07" z="209.70"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="25" typeId="5">
+		<transformation>
+			<translation x="245.64" y="8.44" z="194.91"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="26" typeId="5">
+		<transformation>
+			<translation x="246.95" y="9.84" z="182.28"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="27" typeId="68">
+		<transformation>
+			<translation x="170.93" y="14.5" z="222.63"/>
+			<rotation x="0.00" y="-1.00" z="0.00" angle="230.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+
+	<!-- boids (typeId=42) /-->
+	<entity id="28" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="210.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="29" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="211.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="30" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="212.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="31" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="213.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="32" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="214.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="33" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="215.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="34" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="216.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="35" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="217.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="36" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="37" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="38" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="39" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="40" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="41" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="42" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="43" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="44" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="45" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="46" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="47" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="48" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="49" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="50" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="51" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="52" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="53" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="54" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="55" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="56" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="57" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="58" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="59" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="60" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="61" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="62" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="63" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="64" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="65" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="66" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="67" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="68" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="69" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="70" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="71" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="72" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="73" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="74" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="75" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="76" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="77" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="78" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="79" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="80" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="81" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="82" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="83" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="84" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="85" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="86" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="87" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="88" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="89" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="90" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="91" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="92" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="93" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="94" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="95" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="96" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="97" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="98" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="99" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="100" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="101" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="102" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="103" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="104" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="105" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="106" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="107" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="108" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="109" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="110" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="111" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="112" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="113" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="114" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="115" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="116" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="117" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="118" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="119" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="120" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="121" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="122" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="123" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="124" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="125" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="126" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+	<entity id="127" typeId="42">
+		<transformation>
+			<translation x="234.90" y="9.30" z="218.02"/>
+			<rotation x="1.00" y="0.00" z="0.00" angle="0.00"/>
+			<scale x="1.00" y="1.00" z="1.00"/>
+		</transformation>
+	</entity>
+</environment>

@@ -1,0 +1,81 @@
+#VRML V2.0 utf8
+# modeled using blender3d http://blender.org/$
+# exported using wrl2export.py version $Revision: 1.5 $
+# get latest exporter at http://kimballsoftware.com/blender/
+
+DEF Cube_002 Shape {
+   appearance Appearance {
+      material DEF mat_Material Material {
+         diffuseColor 0.8 0.8 0.8
+         ambientIntensity 0.5
+         specularColor 1.0 1.0 1.0
+         emissiveColor  1.0 1.0 1.0
+         shininess 0.196
+         transparency 0.0
+      } # Material
+      texture DEF box_bmp ImageTexture {
+         url "maps/box3.jpg"
+      } # ImageTexture 
+   } # Appearance
+   geometry IndexedFaceSet {
+      solid TRUE # one sided
+      coord DEF coord_Cube_002 Coordinate {
+         point [
+            -0.5 -0.5 -0.5,
+            -0.5 -0.5 0.5,
+            -0.5 0.5 0.5,
+            -0.5 0.5 -0.5,
+            0.5 -0.5 -0.5,
+            0.5 -0.5 0.5,
+            0.5 0.5 0.5,
+            0.5 0.5 -0.5,
+         ] # point
+      } # Coordinate
+      coordIndex [
+         0, 1, 2, 3, -1,
+         4, 7, 6, 5, -1,
+         0, 4, 5, 1, -1,
+         1, 5, 6, 2, -1,
+         2, 6, 7, 3, -1,
+         4, 0, 3, 7, -1,
+      ] # coordIndex
+      texCoord TextureCoordinate {
+         point [
+            1.034 1.034,
+            1.034 -0.034,
+            -0.034 -0.034,
+            -0.034 1.034,
+            1.034 -0.034,
+            1.034 1.034,
+            -0.034 1.034,
+            -0.034 -0.034,
+            1.034 1.034,
+            1.034 -0.034,
+            -0.034 -0.034,
+            -0.034 1.034,
+            1.034 -0.034,
+            1.034 1.034,
+            -0.034 1.034,
+            -0.034 -0.034,
+            -0.034 -0.034,
+            1.034 -0.034,
+            1.034 1.034,
+            -0.034 1.034,
+            1.034 -0.034,
+            -0.034 -0.034,
+            -0.034 1.034,
+            1.034 1.034,
+         ] # point
+      } # texCoord
+      texCoordIndex [
+         0, 1, 2, 3, -1, 
+         4, 5, 6, 7, -1, 
+         8, 9, 10, 11, -1, 
+         12, 13, 14, 15, -1, 
+         16, 17, 18, 19, -1, 
+         20, 21, 22, 23, -1, 
+      ] # texCoordIndex
+      creaseAngle 0.0 # in radians
+   } # IndexedFaceSet
+} # Shape
+

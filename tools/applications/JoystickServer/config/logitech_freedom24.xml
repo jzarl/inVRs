@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<joystick index="0">
+	<button devIdx="0" contIdx="0"/>
+	<button devIdx="1" contIdx="1"/>
+	<button devIdx="2" contIdx="2"/>
+	<axis devIdx="0" contIdx="0" min="-32768" max="32768"/>
+	<axis devIdx="1" contIdx="1" min="-32768" max="32768"/>
+</joystick>
+
+

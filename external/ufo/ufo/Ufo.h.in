@@ -1,0 +1,21 @@
+#ifndef UFO_UFO_H
+#define UFO_UFO_H
+
+// Definitions for plugin_interface:
+
+#define UFO_BRANCHNAME "@UFO_BRANCHNAME@"
+
+#define UFO_FLOCK_ID "@UFO_FLOCK_ID@"
+
+#define UFO_PILOT_ID "@UFO_PILOT_ID@"
+
+#define UFO_BEHAVIOUR_ID "@UFO_BEHAVIOUR_ID@"
+
+#define UFO_STEERABLE_ID "@UFO_STEERABLE_ID@"
+
+#cmakedefine UFO_HAVE_inVRs ${UFO_HAVE_inVRs}
+
+// Used for ufoplugins InVRsSteerable:
+#cmakedefine UFO_HAVE_inVRs_3DPhysics ${UFO_HAVE_inVRs_3DPhysics}
+
+#endif /* UFO_UFO_H*/

@@ -1,0 +1,28 @@
+UFOCFGPLAIN = "UFOCFGPLAIN" , { Flock | Pilot | Directive | Comment } ;
+
+Flock = StorageModifier , "FLOCK" , Identifier , "{" , 
+        { Parameters | Flock_Children } 
+        "}" ;
+Pilot = StorageModifier , "PILOT", Identifier , "{" , 
+        { Parameters | Pilot_Children } 
+        "}" ;
+Directive = "pluginDirectory" , Path ;
+Comment = "/*" , { Identifier } , "*/" ;
+
+StorageModifier = "immediate" | "fromTemplate" | "template" ;
+Identifier = letter , { letter | decimal digit | "_" | "-" } ;
+Parameters = "parameters" , "{" , 
+             { ( Identifier , "=" , String ) | Comment } , 
+             "}" ;
+Flock_Children = "children" , "{" , {Pilot} , "}" ;
+Pilot_Children = "children" , "{" , { Steerable | Behaviour } , "}" ;
+Path = [ [ "." ] , "/" ] , Identifier , { "/" , Identifier } ;
+
+String = Identifier | ( '"' , Identifier , { " " Identifier } , '"' ) ;
+Steerable = StorageModifier , "STEERABLE" , Identifier , 
+            "{" , { Parameters } "}" ;
+Behaviour = StorageModifier , "BEHAVIOUR" , Identifier , 
+            "{" , { Parameters | Behaviour_Children } "}" ; 
+
+Behaviour_Children = "children" , "{" , { Behaviour } , "}" ;
+

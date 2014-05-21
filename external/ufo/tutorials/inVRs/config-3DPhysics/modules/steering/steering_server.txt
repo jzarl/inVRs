@@ -1,0 +1,266 @@
+UFOCFGPLAIN
+pluginDirectory "../../../../../install/lib/"
+pluginDirectory "../../../../../../../lib"
+immediate FLOCK Flock {
+	children {
+		immediate PILOT Pilot {
+			children {
+				immediate BEHAVIOUR FollowWaypointsBehaviour {
+					parameters { 
+						waypoint = "214.07 10.0 204.60"
+							waypoint = "204.63 10.0 193.98"
+							waypoint = "218.56 10.0 185.34"
+							waypoint = "237.41 10.0 187.70"
+							waypoint = "230.37 10.0 200.33"
+							waypoint = "197.98 10.0 201.53"
+							waypoint = "181.57 10.0 197.74"
+							waypoint = "159.48 10.0 178.80"
+							waypoint = "153.79 10.0 160.15"
+							waypoint = "150.98 10.0 149.25"
+							waypoint = "137.48 10.0 134.89"
+							waypoint = "159.46 10.0 131.27"
+							waypoint = "201.24 10.0 163.97"
+							waypoint = "238.46 10.0 162.11"
+							waypoint = "261.04 10.0 168.64"
+							waypoint = "264.34 10.0 183.50"
+							waypoint = "247.26 10.0 189.13"
+							epsilon = 5.0
+							ignore = y
+					} 
+				}
+				immediate STEERABLE InVRsPhysicsSteerable {
+					parameters {
+						entityId = 23 /* reddish sphere */
+							VMax = 3 /* ~ 11 km/h */
+							environmentId = 1
+					}
+				}
+			}
+		}
+	}
+}
+
+immediate PILOT Pilot {
+	children {
+		fromTemplate BEHAVIOUR betweenBoxesBehaviour { } 
+		immediate STEERABLE InVRsPhysicsSteerable {
+			parameters { /* brown box */
+				environmentId = 1
+					entityId = 14
+					VMax = 5
+			} 
+		}
+	}
+}
+
+immediate PILOT Pilot {
+	children {
+		fromTemplate BEHAVIOUR betweenBoxesBehaviour { } 
+		immediate STEERABLE InVRsPhysicsSteerable {
+			parameters { 
+				environmentBasedId = 65558 /* "stone" sphere */
+					VMax = 1
+			} 
+		}
+	}
+}
+
+immediate PILOT Pilot {
+	children {
+		fromTemplate BEHAVIOUR betweenBoxesBehaviour { } 
+		immediate STEERABLE InVRsPhysicsSteerable {
+			parameters { /* barrel */
+				environmentBasedId = 65549
+					VMax = 5
+			} 
+		}
+	}
+}
+
+template betweenBoxesBehaviour BEHAVIOUR ScaleBehaviour {
+	parameters { scaleFactor = 0.05 }
+	children {
+		immediate BEHAVIOUR AverageBehaviour {
+			children {
+				immediate BEHAVIOUR FollowinVRsEntityBehaviour {
+					parameters { environmentBasedId = 65552 }
+				}
+				immediate BEHAVIOUR FollowinVRsEntityBehaviour {
+					parameters { 
+						environmentId = 1
+							entityId = 15
+					}
+				}
+			}
+		}
+	}
+}
+/* *****************  Flock of Boids ************************ */
+immediate FLOCK Flock {
+	children {
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmPhysicsSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 28
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmPhysicsSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 29
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmPhysicsSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 30
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmPhysicsSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 31
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmPhysicsSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 32
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmPhysicsSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 33
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmPhysicsSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 34
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmPhysicsSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 35
+					}
+				}
+			}
+		}
+		fromTemplate PILOT swarmPilot {
+			children {
+				fromTemplate STEERABLE swarmPhysicsSteerable {
+					parameters {
+						environmentId = 1
+							entityId = 36
+					}
+				}
+			}
+		}
+	}
+}
+template swarmPhysicsSteerable STEERABLE InVRsPhysicsSteerable {
+	parameters { /* set common parameters, but don't specify steered Entity: */
+		deltaMin = 0.2
+			VMax = 5
+			deactivateGravity = true
+	} 
+}
+template swarmPilot PILOT Pilot
+{
+	children {
+		immediate BEHAVIOUR AverageBehaviour {
+			children {
+				immediate BEHAVIOUR ScaleBehaviour {
+					parameters { scaleFactor = 0.5 }
+					children {
+						immediate BEHAVIOUR FollowWaypointsBehaviour {
+							parameters { 
+								waypoint = "237.90 11.0 192.78"
+									epsilon = 0.0
+							} 
+						}
+					}
+				}
+				immediate BEHAVIOUR FaceForwardBehaviour { }
+				immediate BEHAVIOUR ScaleBehaviour {
+					parameters { scaleFactor = 3 }
+					children {
+						immediate BEHAVIOUR AlignmentBehaviour { }
+					}
+				}
+				immediate BEHAVIOUR ScaleBehaviour {
+					parameters { scaleFactor = 1 }
+					children {
+						immediate BEHAVIOUR CohesionBehaviour { }
+					}
+				}
+				immediate BEHAVIOUR ScaleBehaviour {
+					parameters { scaleFactor = 1 }
+					children {
+						immediate BEHAVIOUR SeparationBehaviour { }
+					}
+				}
+			}
+		}
+	}
+}
+/*
+   immediate BEHAVIOUR ScaleBehaviour {
+   parameters { scaleFactor = 1  }
+   children {
+   immediate BEHAVIOUR FollowinVRsUserBehaviour {
+   parameters { username = localUser } 
+   }
+   }
+   }
+   immediate BEHAVIOUR ScaleBehaviour {
+   parameters { scaleFactor = 0.4 normalise = true }
+   children {
+   immediate BEHAVIOUR AlignmentBehaviour { }
+   }
+   }
+   immediate BEHAVIOUR ScaleBehaviour {
+   parameters { scaleFactor = 0.4 normalise = true }
+   children {
+   immediate BEHAVIOUR CohesionBehaviour { }
+   }
+   }
+   immediate BEHAVIOUR ScaleBehaviour {
+   parameters { scaleFactor = 0.2 normalise = true }
+   children {
+   immediate BEHAVIOUR SeparationBehaviour { }
+   }
+   }
+ */

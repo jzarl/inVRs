@@ -1,0 +1,22 @@
+VERSION=`basename $(pwd)`
+cd build
+for d in /jkuvrc/packages/OpenSG/OpenSG-1.* 
+do 
+	OSGD=`basename "$d"` 
+	echo $OSGD 
+	for t in opt dbg
+	do
+		mkdir $OSGD-$t
+		pushd $OSGD-$t
+		if [[ "$t" == opt ]]
+		then
+			CMAKE_BUILD_TYPE=Release
+		else
+			CMAKE_BUILD_TYPE=Debug
+		fi
+		cmake ../../ -DOpenSG_ROOT_DIR=$d -DCMAKE_INSTALL_PREFIX=/jkuvrc/packages/CAVESceneManager/$VERSION -DTARGET_LIB_DIR=lib/$t -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE || break
+		make -j4 || break
+		make install || break
+		popd 
+	done
+done

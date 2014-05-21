@@ -1,0 +1,67 @@
+STEP1: Integration of the physics module
+
+In order to integrate the physics module into inVRs we have to define the module in our module
+configuration file(s). Let's start with the file "config/modules/modules_desktop_server.xml".
+In this file we add an entry for the physics module below the other module definitions:
+
+	<module name="Physics" cfgPath="physics_server.xml" libName="3DPhysics"/> 
+
+What happens here is that we load a module with the module-name Physics and define the 
+configuration file for this module. The xml attribute "libName" defines the name of the library
+file which contains the module. Usually the library has the same name of the Module (like it is for
+the other modules) and it therefore must not be defined. The Physics module is a little inconsistent
+here, that's why we have to pass the library name manually. The library name will automatically be
+extended on linux systems to "libinVRs[libName].so".
+
+We do the same for the file "config/modules/modules_desktop_client.xml":
+
+	<module name="Physics" cfgPath="physics_client.xml" libName="3DPhysics"/> 
+
+Ok, when you start the application again it should start up normally and behave exactly as before.
+The only difference now is that the inVRs Physics module is loaded and configured at startup. But
+as long as you don't use it in your application nothing changes. To explore if the physics module
+was loaded correctly you can have a look at the log-file "server.log" or "client.log" which is
+created by the application. In this file you should find the following entries:
+
+...
+(II) Thread 0xD3B247B0 SystemCore::loadPlugin(): Loading plugin ./../../lib/libinVRs3DPhysics.so
+...
+(II) Thread 0xD3B247B0 Physics::loadConfig(): loading Physics config!
+(II) Thread 0xD3B247B0 Physics::loadConfig(): loading file ./config/modules/physics/physics_server.xml
+(II) Thread 0xD3B247B0 Physics::loadConfig(): changing to stepping function QUICKSTEP!
+(II) Thread 0xD3B247B0 Physics::loadConfig(): trying to load objectManager SingleServerPhysicsObjectManager!
+...
+
+
+Maybe we should have a quick look at the physics configuration file(s) before we proceed to the next
+step. The configuration is separated into three main parts:
+
+<simulation>	... contains settings regarding the physics simulation. The options we have
+					here are the gravity, the simulation step size (in seconds), and the used
+					ODE step function. By default the QUICKSTEP function is chosen, because its
+					faster than the default STEP function. The STEPFAST1 method is deprecated as far
+					as i remember.
+					
+<objectManager>	... in this xml element the used PhysicsObjectManager class is used. This class is
+					responsible for storing the information which user is responsible for
+					simulating which rigid bodies. Currently the only implementation for this class
+					is the SingleServerPhysicsObjectManager, which allows to use a single physics
+					server. The <serverMode ...> element defines whether the local machine is a 
+					physics server or a client
+					
+<synchronizationModel>
+				... this part defines the used SynchronizationModel class. This class is responsible
+					for distributing the physics simulation results from the server to the clients.
+					Furthermore this class (should) allow to forward method calls to the
+					RigidBody and Joint objects at the client sides to the server. In the current
+					implementation the RigidBody method calls are only forwarded by the
+					FullSynchronizationModel, the Joint method calls aren't forwarded at all. So
+					if you need to add forces or manipulate joints it is best to do this at the
+					server side directly!
+					Several synchronizationModels are implemented, preconfigured is the 
+					ChangedSynchronizationModel which distributes the RigidBody transformations only
+					if a change occured since the last simulation step. This reduces the bandwidth
+					since the transformations of fixed (or deactivated) RigidBodies are not 
+					distributed.
+
+Ok, now that the module is loaded and configured we can start using it - in the next step. 

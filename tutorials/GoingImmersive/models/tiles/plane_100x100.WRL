@@ -1,0 +1,49 @@
+#VRML V2.0 utf8
+
+# Produced by 3D Studio MAX VRML97 exporter, Version 9, Revision 1
+# MAX File: bausteine.max, Date: Sat Jan 10 23:43:52 2009
+
+DEF Camera01 Viewpoint {
+  position -251.8 128.5 132.5
+  orientation -0.1921 0.9793 -0.0634 -0.6502
+  fieldOfView 2.331
+  description "Camera01"
+}
+DEF Plane01 Transform {
+  translation 0 -5e-005 0
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0.5882 0.5882 0.5882
+          ambientIntensity 1.0
+          specularColor 0 0 0
+          shininess 0.145
+          transparency 0
+        }
+        texture ImageTexture {
+          url "maps/plane.png"
+        }
+      }
+      geometry DEF Plane01-FACES IndexedFaceSet {
+        ccw TRUE
+        solid TRUE
+        coord DEF Plane01-COORD Coordinate { point [
+          -50 0 50, 50 0 50, -50 0 -50, 50 0 -50]
+        }
+        normal Normal { vector [
+          0 1 0, ] }
+        normalPerVertex TRUE
+        texCoord DEF Plane01-TEXCOORD TextureCoordinate { point [
+          0 0, 1 0, 0 0, 1 0, 0 0, 1 0, 0 1, 1 1]
+        }
+        coordIndex [
+          2, 0, 3, -1, 1, 3, 0, -1]
+        texCoordIndex [
+          6, 4, 7, -1, 5, 7, 4, -1]
+        normalIndex [
+          0, 0, 0, -1, 0, 0, 0, -1, ]
+        }
+    }
+  ]
+}

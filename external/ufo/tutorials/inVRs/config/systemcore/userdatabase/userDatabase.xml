@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<user>
+	<avatar config="avatar.xml" />
+	<cursorModel config="homerCursorModel.xml"/>
+	<userTransformationModel name="HeadPositionUserTransformationModel"/>
+</user>

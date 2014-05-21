@@ -1,0 +1,22 @@
+Transformations
+
+ODEObject:
+The transformation of the ODEObject is equal to the transformation of the dBodyID-object in the ODE simulation:
+
+I) ODEObject.transformation = dBodyID.transformation
+
+There are 2 further Transformations that are needed to match the transformation of the ODEObject to the transformation
+of the visual representation:
+
+OFFSET-TRANSFORMATION:
+The offset-transformation is applied to the Entity's transformation to get the initial ODEObject-transformation so that
+the shape of the ODEObject matches to the visual representation. This offset is entered in world coordinates, not in the
+Entity's coordinate system!!!
+
+
+
+
+Problems:
+
+Problem: 	center of visual representation is not equal to center of ODEObject
+Solution:	set offsetTransformation of ODEObject so that the visual representation matches to the ODEObject

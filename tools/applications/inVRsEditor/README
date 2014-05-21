@@ -1,0 +1,16 @@
+inVRsEditor
+================================
+
+Dependencies
+------------
+
+ - OpenSG 1.8 (experimental support for OpenSG 2.0)
+ - Linux
+ - Qt >= 4.3
+
+
+Compiling and installing
+------------------------
+
+cmake flag to compile the inVRsEditor
+-DINVRS_ENABLE_EDITOR=TRUE

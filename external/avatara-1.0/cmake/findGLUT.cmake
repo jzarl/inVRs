@@ -1,0 +1,36 @@
+if (NOT FIND_GLUT_LOADED)
+
+include (${CMAKE_SOURCE_DIR}/cmake/FindHelperMacros.cmake)
+
+find_package (GLUT)
+
+if (NOT GLUT_FOUND AND OpenSG_FOUND)
+	if (WIN32)
+		set (GLUT_PREDEF_INCLUDE_PATHS ${OpenSG_ROOT_DIR}/include/GL)
+		FIND_INCLUDE_DIR_MACRO (Glut GLUT gl/glut.h GLUT_PREDEF_INCLUDE_PATHS EMPTY)
+
+		set (GLUT_PREDEF_LIB_PATHS ${GLUT_INCLUDE_DIR} ${OpenSG_ROOT_DIR}/lib)
+		FIND_LIBRARY_MACRO (Glut GLUT glut32 GLUT_PREDEF_LIB_PATHS EMPTY)
+		set (GLUT_LIBRARIES ${GLUT_glut32_LIBRARY})
+	elseif (APPLE AND ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+		set (GLUT_PREDEF_INCLUDE_PATHS /System/Library/Frameworks/GLUT.framework/Versions/A/Headers)
+		FIND_INCLUDE_DIR_MACRO (Glut GLUT glut.h GLUT_PREDEF_INCLUDE_PATHS EMPTY)
+
+		SET(GLUT_glut_LIBRARY "-framework GLUT" CACHE STRING "GLUT library for OSX")
+		SET(GLUT_cocoa_LIBRARY "-framework Cocoa" CACHE STRING "Cocoa framework for OSX")
+		set (GLUT_LIBRARIES ${GLUT_glut_LIBRARY} ${GLUT_cocoa_LIBRARY})
+	elseif (UNIX)
+		set (GLUT_PREDEF_INCLUDE_SUFFIX GL)
+		FIND_INCLUDE_DIR_MACRO (Glut GLUT GL/glut.h EMPTY GLUT_PREDEF_INCLUDE_SUFFIX)
+
+		FIND_LIBRARY_MACRO (Glut GLUT glut EMPTY EMPTY)
+		set (GLUT_LIBRARIES ${GLUT_glut_LIBRARY})
+	else (WIN32)
+		message (FATAL_ERROR "Unable to identify target operating system!")
+
+	endif (WIN32)
+endif (NOT GLUT_FOUND AND OpenSG_FOUND)
+
+set (FIND_GLUT_LOADED ON)
+endif (NOT FIND_GLUT_LOADED)
+

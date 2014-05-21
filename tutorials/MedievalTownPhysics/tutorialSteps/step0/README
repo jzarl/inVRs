@@ -1,0 +1,146 @@
+STEP 0: Initial application
+
+This is the original MedievalTown tutorial application but simplified by inheriting from the class
+OpenSGApplicationBase. This class (which again is inherited from the ApplicationBase class) can be
+used to write inVRs applications without the need of re-implementing generic code pieces. Currently
+there is no documentation for this class (will be described in the next tutorial: GoingImmersive), 
+but in this folder you can find the PDF file "WrappingFunctionality.pdf" which describes the basic 
+functions of this class.
+The main feature of the OpenSGApplicationBase class is that it can start the application either in a
+single non-stereo window (for desktop applications for example) or it can use the CAVESceneManager
+in order to run the application on multi-window stereo installations. This is done automatically by
+the class depending on the configuration settings in the general inVRs configuration (usually called
+general*.xml). Thus i would recommend to use this class also in your own application, because it
+wraps a lot of functionality you would have to cope with yourself if you write it from scratch (like
+it was done in the original MedievalTown tutorial).
+
+Ok, let's have a look at the application. The application is implemented in a single class called
+"MedievalTownPhysics". I decided to implement the application in a single source file (without using
+a header file) for a better overview and also to ease the descriptions of the tutorial steps. The 
+application source code is nearly identical to the original MedievalTown application (except the
+generic parts which are managed by the (OpenSG)ApplicationBase classes). Thus i would highly 
+recommend to first go through the MedievalTown tutorial in order to understand the functionality of 
+this application.
+
+Ok, again back to the application, in order to start the application we need a main method. This
+can be found at the bottom of the MedievalTownPhysics.cpp source file. It just creates a new
+application instance, and calls the start method (which is implemented in the ApplicationBase 
+class). What happens then is a sequence of initialization steps which finally lead to the running
+application. Describing these steps here in detail would be too much, so i just show up with the
+major steps/methods and describe them briefly (the method names i use here are not 100% equal to
+the ones used in the implementation). The described steps are executed in the order they are written
+down here (i hope this is more helpful than confusing):
+
+start():				... ApplicationBase method called from main method
+	(A1) init()			... Initializes the whole application
+	(A2) run()			... start the application loop
+	
+(A1) init():
+	(B1) preInit()		... used to initialize things which have to come first (especially before
+							the initialization of the main application is started) 
+	getConfigFile()		... this method has to be implemented in the application and must return the 
+							general inVRs configuration file which should be used
+	loadConfig()		... this method loads the general configuration file (with the Configuraion
+							class) and also reads some internal configuration things (see the
+							ApplicationBase element in the <general> section of the general inVRs
+							configuration file)
+	registerInitCBs()	... the initialization callbacks for the Core Components, the Modules and
+							the Interfaces are registered. Thus the virtual methods 
+							initXXXCallback() can be overwritten in the application if needed
+	(B2) configureSystemCore() 
+						... in this method all Core Components, Interfaces and Modules are 
+							initialized according to the configurations (details see below)
+	(B3) initApplication() . in this step the init method of the OpenSGApplicationBase is called
+							which then calls the initialize method 
+	synchronize()		... at last the applications is synchronized via the network (if you have
+							connected to an other application instance via the network module)
+							
+							
+(B1) preInit():
+	osgInit()			... Initialize OpenSG
+	preInitialize()		... This method can be overwritten in the application in order to do execute
+							initializations which have to be done before the inVRs components are
+							configured
+
+
+(B2) configureSystemCore():
+	initCoreComponents() .. At first all core components are initialized. Note that there are no
+							configurations loaded at this step, only the members are initialized,
+							the configurations are loaded later
+	initInputInterface() .. here the input interface is initialized and the modules for the input
+							interface are loaded. This means that in this step the inputinterface
+							config file is read, the needed Modules are determined and the
+							according plugins are loaded. The configuration loading for the Modules
+							of the InputInterface itself is executed in a later step
+	initOutputInterface() . same as with InputInterface, initialization, OutputInterface module 
+							loading, no configuration of OutputInterface modules
+	initModules()		... Here the main inVRs modules (usually defined in modules.xml) are
+							initialized. The procedure is the same as before, load configured 
+							Modules via Plugin mechanism (library file) but no configuration yet
+	configureInputInterface()
+						... After all parts of the inVRs framework are initialized the configuration
+							of these parts can begin, starting with the InputInterface. Each Module
+							of the InputInterface will be configured by reading the corresponding
+							configuration file (defined in InputInterface config). But before each
+							Module is configured the initInputInterface callback is called for the
+							Module. This allows for example to register factory classes which are
+							then needed when the configurations are loaded (like we did it with the
+							HeightMapModifier or CheckCollisionModifier for the 
+							TransformationManager).
+	configureOutputInterface()
+						... same as above
+	configureModules()  ... same as above	
+	configureCoreComponents()
+						... also the same as above. In this step the scene is loaded by the
+							WorldDatabase, the UserDatabase is filled with data like the user's
+							avatar, and so on.
+	
+				
+
+
+(B3) initApplication():
+	initSceneManager()	... in the OpenSGApplicationBase the configured SceneManager is initialized.
+							Depending on the settings in the general inVRs configuration (useCSM)
+							either the SimpleSceneManager or the CAVESceneManager is used
+	initialize()		... finally the initialization method of the application is called. This one 
+							you have to implement. Here you can initialize the whole application 
+							logic.
+
+				
+(A2) run():
+	glutMainLoop()		... Here the glutMainLoop is started. This one calls the internal display
+							method which is described briefly in the following
+							
+					
+							
+internalDisplay():
+	executeSystemCoreEvents()
+						... In this step all incoming events for the SystemCore are executed
+	updateController()	... the controller is updated (e.g. the data from the InputDevices is read)
+	updateNavigation()	...	the change in the user transformation is determined and thrown in the
+							user's navigation pipe (=TransformationPipe in the 
+							TransformationManager)
+	updateTransformationManagerPartially()
+						... The transformation pipes with a priority >= the priority of the
+							navigation pipe are executed. This is done here needed because the 
+							current user transformation is needed by the interaction module (which
+							comes next). All TransformationPipes which have a lower priority than 
+							the navigation pipe are not executed here (comes later)
+	updateInteraction()	... The interaction module is updated. This includes state changes in the
+							interaction state machine, or update of the transformation of the
+							manipulated entity for example (by putting the result into the
+							interaction TransforamtionPipe) for example
+	display()			... Now the display method of the application is called. Here you can update
+							your application logic
+	updateTransformationManager()
+						... here the remaining TransformationPipes (priority < navigationPipe prior)
+							are executed.
+	updateAvatars()		... updates the animations for example
+	updateCamera()		... updates the camera of the SceneManager. The camera transformation is
+							obtained from the local User object. This object gets the camera
+							transformation from the CameraTransformationWriter which is a modifier
+							in the Navigation TransformationPipe
+	 							
+So, i think that's enough for now, i hope this helps a bit to understand what happens internally
+when using the OpenSGApplicationBase. Let's start with integrating physics - in the next step!
+	 							

@@ -1,0 +1,22 @@
+UFOCFGPLAIN
+pluginDirectory "../../../../../install/lib/"
+pluginDirectory "../../../../../../../lib"
+immediate FLOCK Flock {
+	children {
+		immediate PILOT Pilot {
+			children {
+				immediate BEHAVIOUR FollowinVRsUserBehaviour {
+					parameters { 
+						username = localUser
+					} 
+				}
+				immediate STEERABLE InVRsPhysicsSteerable {
+					parameters {
+						environmentBasedId = 65548
+							VMax = 0.2
+					}
+				}
+			}
+		}
+	}
+}
